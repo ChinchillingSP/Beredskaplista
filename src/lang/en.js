@@ -181,5 +181,10 @@ w_age:"{s} seconds since the last update",
 th_dark:"Switch to dark mode",
 th_light:"Switch to light mode",
 upd:"Last updated: {d}",
-exportOffline:"Offline: Excel or PDF only works if you downloaded that format before, while online. The list and data export (.json) still work."
+exportOffline:"Offline: Excel or PDF only works if you downloaded that format before, while online. The list and data export (.json) still work.",
+in_title:"Install the app",
+in_text:"Add the list to your home screen. It then opens without network, like a normal app, and the browser is less likely to delete your data.",
+in_btn:"Install the app",
+in_ios:"iPhone/iPad: tap the Share button in Safari and choose “Add to Home Screen”.",
+in_iosData:"Important on iPhone: the app does not share data with Safari. Install first and fill in the list in the app, or export your data and import it in the app."
 };

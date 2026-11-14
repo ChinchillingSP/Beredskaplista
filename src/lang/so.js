@@ -181,5 +181,10 @@ w_age:"{s} ilbiriqsi tan iyo cusboonaysiintii u dambeysay",
 th_dark:"U beddel qaabka madow",
 th_light:"U beddel qaabka iftiinka",
 upd:"Markii ugu dambeysay la cusbooneysiiyay: {d}",
-exportOffline:"Internet la'aan: Excel ama PDF wuxuu shaqeeyaa oo keliya haddii aad qaabkaas hore u soo dejisay adigoo internet haysta. Liiska iyo dhoofinta xogta (.json) way shaqeeyaan."
+exportOffline:"Internet la'aan: Excel ama PDF wuxuu shaqeeyaa oo keliya haddii aad qaabkaas hore u soo dejisay adigoo internet haysta. Liiska iyo dhoofinta xogta (.json) way shaqeeyaan.",
+in_title:"Ku rakib app-ka",
+in_text:"Liiska ku dar shaashadda hore. Markaas wuxuu furmaa internet la'aan, sida app caadi ah, browser-kuna si fudud uma tirtiro xogtaada.",
+in_btn:"Ku rakib app-ka",
+in_ios:"iPhone/iPad: Safari ku riix badhanka La wadaag kadibna dooro «Ku dar Shaashadda Hore».",
+in_iosData:"Muhiim iPhone: app-ku xog lama wadaago Safari. Marka hore rakib oo liiska ku buuxi app-ka, ama xogtaada dhoofi oo app-ka ku soo dhoofso."
 };

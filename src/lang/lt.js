@@ -181,5 +181,10 @@ w_age:"{s} s nuo paskutinio atnaujinimo",
 th_dark:"Perjungti į tamsų režimą",
 th_light:"Perjungti į šviesų režimą",
 upd:"Paskutinį kartą atnaujinta: {d}",
-exportOffline:"Be ryšio: Excel ar PDF veikia tik jei šį formatą anksčiau atsisiuntėte su ryšiu. Sąrašas ir duomenų eksportas (.json) veikia."
+exportOffline:"Be ryšio: Excel ar PDF veikia tik jei šį formatą anksčiau atsisiuntėte su ryšiu. Sąrašas ir duomenų eksportas (.json) veikia.",
+in_title:"Įdiekite programėlę",
+in_text:"Pridėkite sąrašą prie pradžios ekrano. Tada jis atsidaro be ryšio, kaip įprasta programėlė, o naršyklė rečiau ištrina jūsų duomenis.",
+in_btn:"Įdiegti programėlę",
+in_ios:"iPhone/iPad: Safari paspauskite mygtuką „Bendrinti“ ir pasirinkite „Įtraukti į pradžios ekraną“.",
+in_iosData:"Svarbu iPhone: programėlė nesidalija duomenimis su Safari. Pirmiausia įdiekite ir pildykite sąrašą programėlėje arba eksportuokite duomenis ir importuokite juos programėlėje."
 };

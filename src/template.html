@@ -101,6 +101,9 @@ a{color:var(--navy)}
 .hdr{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:var(--bg);padding-block:6px}
 .notice{background:var(--accent-soft);border-inline-start:4px solid var(--accent);border-radius:6px;padding:8px 12px;margin:0;font-weight:700}
 .export{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.install{border-color:var(--navy)}
+.install p{margin:0}
+.install .primary{justify-self:start}
 .ghost{font:inherit;font-weight:700;background:var(--surface);color:var(--navy);border:1px solid var(--navy);border-radius:6px;padding:6px 12px;cursor:pointer}
 .shform{display:flex;gap:8px;flex-wrap:wrap}.shform input{flex:1 1 220px;width:auto}
 .picks{display:flex;flex-wrap:wrap;gap:6px}
@@ -164,6 +167,12 @@ p.tiny{font-size:12px;margin:0}
 
   <section id="v-overview" class="view">
     <div style="display:grid;gap:14px">
+      <div class="panel install" id="install" hidden>
+        <h2 data-t="in_title"></h2>
+        <p data-t="in_text"></p>
+        <button type="button" class="primary" id="inbtn" data-t="in_btn" hidden></button>
+        <div id="inios" hidden><p data-t="in_ios"></p><p class="tiny" data-t="in_iosData"></p></div>
+      </div>
       <div class="panel">
         <h2 data-t="household"></h2>
         <div class="hh" id="hh"></div>
@@ -299,6 +308,18 @@ const LIBBASE=/*LIBBASE*/;const USE_SW=/*USE_SW*/;
 const LIBS={xlsx:"xlsx/0.18.5/xlsx.full.min.js",jspdf:"jspdf/2.5.1/jspdf.umd.min.js",h2c:"html2canvas/1.4.1/html2canvas.min.js"};const libP={};
 function lib(k){return libP[k]||(libP[k]=new Promise((ok,no)=>{const sc=document.createElement("script");sc.src=LIBBASE+LIBS[k];sc.onload=ok;sc.onerror=()=>{delete libP[k];sc.remove();no(new Error("lib "+k))};document.head.appendChild(sc)}))}
 if(USE_SW&&"serviceWorker" in navigator)navigator.serviceWorker.register("./sw.js").catch(()=>{});
+// "Install the app": Android/desktop Chrome use the browser's own prompt; iPhone/iPad get the Share → Add to Home Screen steps
+let inPrompt=null;
+function inShow(){const el=document.getElementById("install");if(!el||!USE_SW)return;
+  const installed=matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+  const ios=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+  document.getElementById("inbtn").hidden=!inPrompt;document.getElementById("inios").hidden=!ios;
+  el.hidden=installed||!(inPrompt||ios)}
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();inPrompt=e;inShow()});
+window.addEventListener("appinstalled",()=>{inPrompt=null;inShow()});
+// Ask the browser not to clear the list when the device runs low on space (once, on the first save)
+let persistAsked=false;
+function askPersist(){if(persistAsked)return;persistAsked=true;try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist().catch(()=>{})}catch(e){}}
 const WIRE=/*WIRE*/;const WIREAT=/*WIREAT*/;const BUILT=/*BUILT*/;
 const CATS=["water","food","cook","heat","info","health","hyg","pay","evac","home"];
 const C=Math.ceil;
@@ -629,7 +650,7 @@ const DOCS=lsGet(LSK,{})||{};const META=lsGet(LSK+".meta",{})||{};
 function metaSet(k,v){META[k]=v;lsPut(LSK+".meta",META)}
 const LSUBS=[];
 function snapDoc(k){return {exists:k in DOCS,id:k.slice(k.indexOf("/")+1),data:()=>DOCS[k]}}
-function changed(){lsPut(LSK,DOCS);metaSet("changed",Date.now());LSUBS.forEach(f=>f());updDirty()}
+function changed(){askPersist();lsPut(LSK,DOCS);metaSet("changed",Date.now());LSUBS.forEach(f=>f());updDirty()}
 function ldoc(path){return {onSnapshot:cb=>{const f=()=>cb(snapDoc(path));LSUBS.push(f);f()},
   set:async d=>{DOCS[path]=JSON.parse(JSON.stringify(d));changed()},update:async d=>{DOCS[path]={...(DOCS[path]||{}),...d};changed()},delete:async()=>{delete DOCS[path];changed()}}}
 const localDB={doc:ldoc,collection:c=>({doc:id=>ldoc(c+"/"+id),
@@ -643,7 +664,8 @@ $("#dclr").onclick=e=>{const b=e.currentTarget;if(b.dataset.armed!=="1"){b.datas
   Object.keys(DOCS).forEach(k=>delete DOCS[k]);try{localStorage.removeItem(LSK);localStorage.removeItem(LSK+".meta")}catch(_){}
   META.changed=0;META.exported=0;hh={a:0,k:0,i:0,u:0,D:7};state={};custom=[];outage=null;LSUBS.forEach(f=>f());renderAll();updDirty();b.dataset.armed="";$("#djmsg").textContent=t("cleared")};
 
-renderAll();
+renderAll();inShow();
+document.getElementById("inbtn").onclick=async()=>{if(!inPrompt)return;inPrompt.prompt();try{await inPrompt.userChoice}catch(e){}inPrompt=null;inShow()};
 (()=>{
   db=localDB;
   const busy=()=>{const a=document.activeElement;return a&&a.closest&&a.closest("#list")&&a.type!=="checkbox"};

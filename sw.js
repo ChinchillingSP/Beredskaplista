@@ -2,12 +2,17 @@
 // - The page, fonts and last headlines are stored on the first visit, so the page opens without network.
 // - Headlines (wire.json): network first, last stored copy when offline.
 // - Export libraries (vendor/): stored the first time someone downloads Excel or PDF.
-const CACHE = "beredskap-38dac433ca66";
+const CACHE = "beredskap-1ce405dc37ef";
 const PRECACHE = [
  "./",
  "index.html",
  "wire.json",
  "fonts/fonts.css",
+ "manifest.webmanifest",
+ "icons/apple-touch-icon.png",
+ "icons/icon-192.png",
+ "icons/icon-512.png",
+ "icons/icon.svg",
  "fonts/archivo-latin-700-normal.woff2",
  "fonts/archivo-latin-800-normal.woff2",
  "fonts/archivo-latin-ext-700-normal.woff2",

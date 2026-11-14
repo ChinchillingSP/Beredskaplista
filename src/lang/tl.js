@@ -181,5 +181,10 @@ w_age:"{s} segundo mula sa huling update",
 th_dark:"Lumipat sa dark mode",
 th_light:"Lumipat sa light mode",
 upd:"Huling na-update: {d}",
-exportOffline:"Offline: gagana lang ang Excel o PDF kung na-download mo na ang format na iyon dati habang may internet. Gumagana pa rin ang listahan at ang export ng data (.json)."
+exportOffline:"Offline: gagana lang ang Excel o PDF kung na-download mo na ang format na iyon dati habang may internet. Gumagana pa rin ang listahan at ang export ng data (.json).",
+in_title:"I-install ang app",
+in_text:"Idagdag ang listahan sa home screen. Bubukas ito nang walang internet, gaya ng karaniwang app, at hindi basta mabubura ng browser ang iyong data.",
+in_btn:"I-install ang app",
+in_ios:"iPhone/iPad: pindutin ang Share button sa Safari at piliin ang “Add to Home Screen”.",
+in_iosData:"Mahalaga sa iPhone: hindi nagbabahagi ng data ang app sa Safari. Mag-install muna at punan ang listahan sa app, o i-export ang data at i-import ito sa app."
 };

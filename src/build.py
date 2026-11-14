@@ -21,15 +21,23 @@ src = (src.replace("/*LANGS*/", langs)
 # The claude.ai artifact host adds the document skeleton; GitHub Pages needs it in the file.
 src = ('<!doctype html>\n<html lang="nb">\n<meta charset="utf-8">\n'
        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
-       '<meta name="color-scheme" content="light dark">\n' + src + '\n</html>\n')
+       '<meta name="color-scheme" content="light dark">\n'
+       '<meta name="theme-color" content="#00205b">\n'
+       '<link rel="manifest" href="manifest.webmanifest">\n'
+       '<link rel="icon" href="icons/icon.svg" type="image/svg+xml">\n'
+       '<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">\n'
+       '<meta name="apple-mobile-web-app-capable" content="yes">\n'
+       '<meta name="mobile-web-app-capable" content="yes">\n'
+       '<meta name="apple-mobile-web-app-title" content="Beredskap">\n' + src + '\n</html>\n')
 open("../index.html", "w", encoding="utf-8").write(src)
 
 # Service worker. The cache name is a hash of everything it precaches, so every
 # change to the page gives a new version and old caches are removed on their own.
 fonts = sorted(os.path.relpath(f, "..") for f in glob.glob("../fonts/*.woff2"))
-precache = ["./", "index.html", "wire.json", "fonts/fonts.css"] + fonts
+icons = sorted(os.path.relpath(f, "..") for f in glob.glob("../icons/*"))
+precache = ["./", "index.html", "wire.json", "fonts/fonts.css", "manifest.webmanifest"] + icons + fonts
 h = hashlib.sha256()
-for f in ["index.html", "fonts/fonts.css"] + fonts:
+for f in ["index.html", "fonts/fonts.css", "manifest.webmanifest"] + icons + fonts:
     h.update(open(os.path.join("..", f), "rb").read())
 version = "beredskap-" + h.hexdigest()[:12]
 sw = open("sw.template.js", encoding="utf-8").read()

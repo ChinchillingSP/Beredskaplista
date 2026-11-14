@@ -181,5 +181,10 @@ w_age:"{s} segundos desde la última actualización",
 th_dark:"Cambiar a modo oscuro",
 th_light:"Cambiar a modo claro",
 upd:"Última actualización: {d}",
-exportOffline:"Sin conexión: Excel o PDF solo funciona si ya descargaste ese formato antes, con conexión. La lista y la exportación de datos (.json) sí funcionan."
+exportOffline:"Sin conexión: Excel o PDF solo funciona si ya descargaste ese formato antes, con conexión. La lista y la exportación de datos (.json) sí funcionan.",
+in_title:"Instala la app",
+in_text:"Añade la lista a la pantalla de inicio. Así abre sin conexión, como una app normal, y el navegador no borra tus datos tan fácilmente.",
+in_btn:"Instalar la app",
+in_ios:"iPhone/iPad: pulsa el botón Compartir de Safari y elige «Añadir a pantalla de inicio».",
+in_iosData:"Importante en iPhone: la app no comparte datos con Safari. Instálala primero y rellena la lista en la app, o exporta tus datos e impórtalos en la app."
 };

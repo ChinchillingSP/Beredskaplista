@@ -181,5 +181,10 @@ w_age:"{s} s od ostatniej aktualizacji",
 th_dark:"Przełącz na tryb ciemny",
 th_light:"Przełącz na tryb jasny",
 upd:"Ostatnia aktualizacja: {d}",
-exportOffline:"Bez sieci: Excel lub PDF działa tylko, jeśli wcześniej pobrano ten format z siecią. Lista i eksport danych (.json) działają."
+exportOffline:"Bez sieci: Excel lub PDF działa tylko, jeśli wcześniej pobrano ten format z siecią. Lista i eksport danych (.json) działają.",
+in_title:"Zainstaluj aplikację",
+in_text:"Dodaj listę do ekranu głównego. Wtedy otwiera się bez sieci, jak zwykła aplikacja, a przeglądarka rzadziej usuwa twoje dane.",
+in_btn:"Zainstaluj aplikację",
+in_ios:"iPhone/iPad: w Safari stuknij przycisk Udostępnij i wybierz „Do ekranu początkowego”.",
+in_iosData:"Ważne na iPhonie: aplikacja nie dzieli danych z Safari. Najpierw zainstaluj i wypełnij listę w aplikacji albo wyeksportuj dane i zaimportuj je w aplikacji."
 };

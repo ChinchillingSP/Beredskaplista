@@ -13,6 +13,7 @@ Household emergency preparedness list for Norway, based on the advice from DSB (
 - Power outage clock.
 - Shelter finder for Oslo and Bærum by postcode, street or coordinates, using a local copy of DSB's public shelter register.
 - Emergency numbers, siren signals and a news tab with security, AI and Norwegian headlines.
+- Installable as an app on Android and iPhone (install button on the overview tab).
 - Works offline: after the first visit with a connection, the page opens without network (service worker). Excel and PDF need a connection the first time each is used.
 
 ## Privacy
@@ -30,6 +31,7 @@ This page is made in good faith, but it is not official advice. If in doubt or i
 | `index.html` | The built page that GitHub Pages serves. Do not edit it by hand. |
 | `wire.json` | Latest news headlines, read by the page every 5 minutes. |
 | `sw.js` | Service worker for offline use. Built from `src/sw.template.js`; do not edit by hand. |
+| `manifest.webmanifest`, `icons/` | Lets phones install the page as an app (home screen icon, opens offline). |
 | `fonts/` | Self-hosted fonts, so text looks the same offline. |
 | `vendor/` | Excel and PDF libraries, loaded only when someone downloads. |
 | `src/template.html` | Page layout, styles and code. |

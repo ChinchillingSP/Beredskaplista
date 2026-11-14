@@ -3,6 +3,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#00205b">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Beredskap">
 <title>Beredskapslista</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="fonts/fonts.css">
@@ -106,6 +113,9 @@ a{color:var(--navy)}
 .hdr{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:var(--bg);padding-block:6px}
 .notice{background:var(--accent-soft);border-inline-start:4px solid var(--accent);border-radius:6px;padding:8px 12px;margin:0;font-weight:700}
 .export{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.install{border-color:var(--navy)}
+.install p{margin:0}
+.install .primary{justify-self:start}
 .ghost{font:inherit;font-weight:700;background:var(--surface);color:var(--navy);border:1px solid var(--navy);border-radius:6px;padding:6px 12px;cursor:pointer}
 .shform{display:flex;gap:8px;flex-wrap:wrap}.shform input{flex:1 1 220px;width:auto}
 .picks{display:flex;flex-wrap:wrap;gap:6px}
@@ -169,6 +179,12 @@ p.tiny{font-size:12px;margin:0}
 
   <section id="v-overview" class="view">
     <div style="display:grid;gap:14px">
+      <div class="panel install" id="install" hidden>
+        <h2 data-t="in_title"></h2>
+        <p data-t="in_text"></p>
+        <button type="button" class="primary" id="inbtn" data-t="in_btn" hidden></button>
+        <div id="inios" hidden><p data-t="in_ios"></p><p class="tiny" data-t="in_iosData"></p></div>
+      </div>
       <div class="panel">
         <h2 data-t="household"></h2>
         <div class="hh" id="hh"></div>
@@ -479,7 +495,12 @@ w_age:"{s} sekunder siden siste oppdatering",
 th_dark:"Bytt til mørk modus",
 th_light:"Bytt til lys modus",
 upd:"Sist oppdatert: {d}",
-exportOffline:"Uten nett: Excel eller PDF virker bare hvis du har lastet ned det formatet før, med nett. Lista og eksport av data (.json) virker."
+exportOffline:"Uten nett: Excel eller PDF virker bare hvis du har lastet ned det formatet før, med nett. Lista og eksport av data (.json) virker.",
+in_title:"Installer appen",
+in_text:"Legg lista på hjemskjermen. Da åpner den uten nett, som en vanlig app, og nettleseren sletter ikke dataene dine så lett.",
+in_btn:"Installer appen",
+in_ios:"iPhone/iPad: trykk Del-knappen i Safari og velg «Legg til på Hjem-skjerm».",
+in_iosData:"Viktig på iPhone: appen deler ikke data med Safari. Installer først og fyll ut lista i appen, eller eksporter dataene og importer dem i appen."
 };
 
 L.en={
@@ -665,7 +686,12 @@ w_age:"{s} seconds since the last update",
 th_dark:"Switch to dark mode",
 th_light:"Switch to light mode",
 upd:"Last updated: {d}",
-exportOffline:"Offline: Excel or PDF only works if you downloaded that format before, while online. The list and data export (.json) still work."
+exportOffline:"Offline: Excel or PDF only works if you downloaded that format before, while online. The list and data export (.json) still work.",
+in_title:"Install the app",
+in_text:"Add the list to your home screen. It then opens without network, like a normal app, and the browser is less likely to delete your data.",
+in_btn:"Install the app",
+in_ios:"iPhone/iPad: tap the Share button in Safari and choose “Add to Home Screen”.",
+in_iosData:"Important on iPhone: the app does not share data with Safari. Install first and fill in the list in the app, or export your data and import it in the app."
 };
 
 L.es={
@@ -851,7 +877,12 @@ w_age:"{s} segundos desde la última actualización",
 th_dark:"Cambiar a modo oscuro",
 th_light:"Cambiar a modo claro",
 upd:"Última actualización: {d}",
-exportOffline:"Sin conexión: Excel o PDF solo funciona si ya descargaste ese formato antes, con conexión. La lista y la exportación de datos (.json) sí funcionan."
+exportOffline:"Sin conexión: Excel o PDF solo funciona si ya descargaste ese formato antes, con conexión. La lista y la exportación de datos (.json) sí funcionan.",
+in_title:"Instala la app",
+in_text:"Añade la lista a la pantalla de inicio. Así abre sin conexión, como una app normal, y el navegador no borra tus datos tan fácilmente.",
+in_btn:"Instalar la app",
+in_ios:"iPhone/iPad: pulsa el botón Compartir de Safari y elige «Añadir a pantalla de inicio».",
+in_iosData:"Importante en iPhone: la app no comparte datos con Safari. Instálala primero y rellena la lista en la app, o exporta tus datos e impórtalos en la app."
 };
 
 L.pl={
@@ -1037,7 +1068,12 @@ w_age:"{s} s od ostatniej aktualizacji",
 th_dark:"Przełącz na tryb ciemny",
 th_light:"Przełącz na tryb jasny",
 upd:"Ostatnia aktualizacja: {d}",
-exportOffline:"Bez sieci: Excel lub PDF działa tylko, jeśli wcześniej pobrano ten format z siecią. Lista i eksport danych (.json) działają."
+exportOffline:"Bez sieci: Excel lub PDF działa tylko, jeśli wcześniej pobrano ten format z siecią. Lista i eksport danych (.json) działają.",
+in_title:"Zainstaluj aplikację",
+in_text:"Dodaj listę do ekranu głównego. Wtedy otwiera się bez sieci, jak zwykła aplikacja, a przeglądarka rzadziej usuwa twoje dane.",
+in_btn:"Zainstaluj aplikację",
+in_ios:"iPhone/iPad: w Safari stuknij przycisk Udostępnij i wybierz „Do ekranu początkowego”.",
+in_iosData:"Ważne na iPhonie: aplikacja nie dzieli danych z Safari. Najpierw zainstaluj i wypełnij listę w aplikacji albo wyeksportuj dane i zaimportuj je w aplikacji."
 };
 
 L.lt={
@@ -1223,7 +1259,12 @@ w_age:"{s} s nuo paskutinio atnaujinimo",
 th_dark:"Perjungti į tamsų režimą",
 th_light:"Perjungti į šviesų režimą",
 upd:"Paskutinį kartą atnaujinta: {d}",
-exportOffline:"Be ryšio: Excel ar PDF veikia tik jei šį formatą anksčiau atsisiuntėte su ryšiu. Sąrašas ir duomenų eksportas (.json) veikia."
+exportOffline:"Be ryšio: Excel ar PDF veikia tik jei šį formatą anksčiau atsisiuntėte su ryšiu. Sąrašas ir duomenų eksportas (.json) veikia.",
+in_title:"Įdiekite programėlę",
+in_text:"Pridėkite sąrašą prie pradžios ekrano. Tada jis atsidaro be ryšio, kaip įprasta programėlė, o naršyklė rečiau ištrina jūsų duomenis.",
+in_btn:"Įdiegti programėlę",
+in_ios:"iPhone/iPad: Safari paspauskite mygtuką „Bendrinti“ ir pasirinkite „Įtraukti į pradžios ekraną“.",
+in_iosData:"Svarbu iPhone: programėlė nesidalija duomenimis su Safari. Pirmiausia įdiekite ir pildykite sąrašą programėlėje arba eksportuokite duomenis ir importuokite juos programėlėje."
 };
 
 L.uk={
@@ -1409,7 +1450,12 @@ w_age:"{s} с від останнього оновлення",
 th_dark:"Увімкнути темний режим",
 th_light:"Увімкнути світлий режим",
 upd:"Останнє оновлення: {d}",
-exportOffline:"Без мережі: Excel або PDF працює, лише якщо ви раніше завантажили цей формат з мережею. Список і експорт даних (.json) працюють."
+exportOffline:"Без мережі: Excel або PDF працює, лише якщо ви раніше завантажили цей формат з мережею. Список і експорт даних (.json) працюють.",
+in_title:"Встановіть застосунок",
+in_text:"Додайте список на головний екран. Тоді він відкривається без мережі, як звичайний застосунок, і браузер рідше видаляє ваші дані.",
+in_btn:"Встановити застосунок",
+in_ios:"iPhone/iPad: у Safari натисніть кнопку «Поширити» й виберіть «На початковий екран».",
+in_iosData:"Важливо на iPhone: застосунок не ділиться даними з Safari. Спершу встановіть і заповнюйте список у застосунку або експортуйте дані й імпортуйте їх у застосунку."
 };
 
 L.ar={
@@ -1595,7 +1641,12 @@ w_age:"{s} ثانية منذ آخر تحديث",
 th_dark:"التبديل إلى الوضع الداكن",
 th_light:"التبديل إلى الوضع الفاتح",
 upd:"آخر تحديث: {d}",
-exportOffline:"بدون اتصال: يعمل Excel أو PDF فقط إذا نزّلت هذه الصيغة من قبل مع الاتصال. القائمة وتصدير البيانات (.json) يعملان."
+exportOffline:"بدون اتصال: يعمل Excel أو PDF فقط إذا نزّلت هذه الصيغة من قبل مع الاتصال. القائمة وتصدير البيانات (.json) يعملان.",
+in_title:"ثبّت التطبيق",
+in_text:"أضف القائمة إلى الشاشة الرئيسية. عندها تفتح بدون اتصال مثل تطبيق عادي، ويقلّ احتمال أن يحذف المتصفح بياناتك.",
+in_btn:"تثبيت التطبيق",
+in_ios:"آيفون/آيباد: اضغط زر المشاركة في Safari واختر «إضافة إلى الشاشة الرئيسية».",
+in_iosData:"مهم على آيفون: التطبيق لا يشارك البيانات مع Safari. ثبّته أولًا واملأ القائمة داخل التطبيق، أو صدّر بياناتك واستوردها في التطبيق."
 };
 
 L.so={
@@ -1781,7 +1832,12 @@ w_age:"{s} ilbiriqsi tan iyo cusboonaysiintii u dambeysay",
 th_dark:"U beddel qaabka madow",
 th_light:"U beddel qaabka iftiinka",
 upd:"Markii ugu dambeysay la cusbooneysiiyay: {d}",
-exportOffline:"Internet la'aan: Excel ama PDF wuxuu shaqeeyaa oo keliya haddii aad qaabkaas hore u soo dejisay adigoo internet haysta. Liiska iyo dhoofinta xogta (.json) way shaqeeyaan."
+exportOffline:"Internet la'aan: Excel ama PDF wuxuu shaqeeyaa oo keliya haddii aad qaabkaas hore u soo dejisay adigoo internet haysta. Liiska iyo dhoofinta xogta (.json) way shaqeeyaan.",
+in_title:"Ku rakib app-ka",
+in_text:"Liiska ku dar shaashadda hore. Markaas wuxuu furmaa internet la'aan, sida app caadi ah, browser-kuna si fudud uma tirtiro xogtaada.",
+in_btn:"Ku rakib app-ka",
+in_ios:"iPhone/iPad: Safari ku riix badhanka La wadaag kadibna dooro «Ku dar Shaashadda Hore».",
+in_iosData:"Muhiim iPhone: app-ku xog lama wadaago Safari. Marka hore rakib oo liiska ku buuxi app-ka, ama xogtaada dhoofi oo app-ka ku soo dhoofso."
 };
 
 L.ti={
@@ -1967,7 +2023,12 @@ w_age:"ካብ ናይ መወዳእታ ምሕዳስ {s} ካልኢት",
 th_dark:"ናብ ጸልማት ኣቀማምጣ ቀይር",
 th_light:"ናብ ብሩህ ኣቀማምጣ ቀይር",
 upd:"ናይ መወዳእታ ምሕዳስ፦ {d}",
-exportOffline:"ብዘይ መርበብ፦ Excel ወይ PDF እቲ ቅርጺ ቅድሚ ሕጂ ምስ መርበብ እንተ ኣውሪድኩምዎ ጥራይ ይሰርሕ። ዝርዝርን ምውጻእ ሓበሬታ (.json)ን ይሰርሑ።"
+exportOffline:"ብዘይ መርበብ፦ Excel ወይ PDF እቲ ቅርጺ ቅድሚ ሕጂ ምስ መርበብ እንተ ኣውሪድኩምዎ ጥራይ ይሰርሕ። ዝርዝርን ምውጻእ ሓበሬታ (.json)ን ይሰርሑ።",
+in_title:"ኣፕ ኣእትዉ",
+in_text:"ነቲ ዝርዝር ኣብ ቀንዲ ስክሪን ወስኹዎ። ሽዑ ከም ንቡር ኣፕ ብዘይ መርበብ ይኽፈት፡ መርበብ-ሓባሪ ድማ ሓበሬታኹም ብቐሊሉ ኣይድምስሶን።",
+in_btn:"ኣፕ ኣእትው",
+in_ios:"iPhone/iPad፦ ኣብ Safari ናይ ምክፋል መልጎም ጠውቑ፡ «ናብ ቀንዲ ስክሪን ወስኽ» ምረጹ።",
+in_iosData:"ኣብ iPhone ኣገዳሲ፦ እቲ ኣፕ ምስ Safari ሓበሬታ ኣይካፈልን። ቅድም ኣእትዉ ድሕሪኡ ኣብ ኣፕ ዝርዝር ምልኡ፡ ወይ ሓበሬታኹም ኣውጺኹም ኣብ ኣፕ ኣእትዉ።"
 };
 
 L.tl={
@@ -2153,7 +2214,12 @@ w_age:"{s} segundo mula sa huling update",
 th_dark:"Lumipat sa dark mode",
 th_light:"Lumipat sa light mode",
 upd:"Huling na-update: {d}",
-exportOffline:"Offline: gagana lang ang Excel o PDF kung na-download mo na ang format na iyon dati habang may internet. Gumagana pa rin ang listahan at ang export ng data (.json)."
+exportOffline:"Offline: gagana lang ang Excel o PDF kung na-download mo na ang format na iyon dati habang may internet. Gumagana pa rin ang listahan at ang export ng data (.json).",
+in_title:"I-install ang app",
+in_text:"Idagdag ang listahan sa home screen. Bubukas ito nang walang internet, gaya ng karaniwang app, at hindi basta mabubura ng browser ang iyong data.",
+in_btn:"I-install ang app",
+in_ios:"iPhone/iPad: pindutin ang Share button sa Safari at piliin ang “Add to Home Screen”.",
+in_iosData:"Mahalaga sa iPhone: hindi nagbabahagi ng data ang app sa Safari. Mag-install muna at punan ang listahan sa app, o i-export ang data at i-import ito sa app."
 };
 
 L.ja={
@@ -2339,7 +2405,12 @@ w_age:"最終更新から{s}秒",
 th_dark:"ダークモードに切り替え",
 th_light:"ライトモードに切り替え",
 upd:"最終更新：{d}",
-exportOffline:"オフライン：ExcelまたはPDFは、その形式を以前にオンラインでダウンロードしていれば使えます。リストとデータのエクスポート(.json)は使えます。"
+exportOffline:"オフライン：ExcelまたはPDFは、その形式を以前にオンラインでダウンロードしていれば使えます。リストとデータのエクスポート(.json)は使えます。",
+in_title:"アプリをインストール",
+in_text:"リストをホーム画面に追加しましょう。通常のアプリのようにオフラインで開き、ブラウザがデータを消しにくくなります。",
+in_btn:"アプリをインストール",
+in_ios:"iPhone/iPad：Safariの共有ボタンをタップし、「ホーム画面に追加」を選びます。",
+in_iosData:"iPhoneでの注意：アプリはSafariとデータを共有しません。先にインストールしてアプリでリストを入力するか、データをエクスポートしてアプリでインポートしてください。"
 };
 
 const ORDER=["nb","en","es","pl","lt","uk","ar","so","ti","tl","ja"];
@@ -2349,6 +2420,18 @@ const LIBBASE="vendor/";const USE_SW=true;
 const LIBS={xlsx:"xlsx/0.18.5/xlsx.full.min.js",jspdf:"jspdf/2.5.1/jspdf.umd.min.js",h2c:"html2canvas/1.4.1/html2canvas.min.js"};const libP={};
 function lib(k){return libP[k]||(libP[k]=new Promise((ok,no)=>{const sc=document.createElement("script");sc.src=LIBBASE+LIBS[k];sc.onload=ok;sc.onerror=()=>{delete libP[k];sc.remove();no(new Error("lib "+k))};document.head.appendChild(sc)}))}
 if(USE_SW&&"serviceWorker" in navigator)navigator.serviceWorker.register("./sw.js").catch(()=>{});
+// "Install the app": Android/desktop Chrome use the browser's own prompt; iPhone/iPad get the Share → Add to Home Screen steps
+let inPrompt=null;
+function inShow(){const el=document.getElementById("install");if(!el||!USE_SW)return;
+  const installed=matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+  const ios=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+  document.getElementById("inbtn").hidden=!inPrompt;document.getElementById("inios").hidden=!ios;
+  el.hidden=installed||!(inPrompt||ios)}
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();inPrompt=e;inShow()});
+window.addEventListener("appinstalled",()=>{inPrompt=null;inShow()});
+// Ask the browser not to clear the list when the device runs low on space (once, on the first save)
+let persistAsked=false;
+function askPersist(){if(persistAsked)return;persistAsked=true;try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist().catch(()=>{})}catch(e){}}
 const WIRE=[{"t": "Microsoft melder at dataproblemene er løst", "u": "https://www.vg.no/nyheter/i/WmbjJj/microsoft-melder-at-dataproblemene-er-loest", "s": "VG", "d": "2026-11-14T04:22Z", "c": "inc", "n": 1}, {"t": "Vil gjøre advokattjenester tilgjengelig for flere", "u": "https://www.digi.no/kunstig-intelligens/utviklet-ki-til-a-ta-den-juridiske-forstelinjen/7182813", "s": "digi.no", "d": "2026-11-14T04:00Z", "c": "ai", "n": 1}, {"t": "Mann pågrepet etter vold og knivtrusler på tog i Ski", "u": "https://www.vg.no/nyheter/i/xJP8JX/mann-paagrepet-etter-vold-og-knivtrusler-paa-tog-i-ski", "s": "VG", "d": "2026-11-14T01:21Z", "c": "inc", "n": 1}, {"t": "Storm, A2, 14 november 06:00 UTC til 14 november 12:00 UTC.", "u": "https://www.yr.no/nb/farevarsler", "s": "MET farevarsel", "d": "2026-11-13T21:40Z", "c": "inc", "n": 1}, {"t": "Storm, A3, 14 november 06:00 UTC til 14 november 20:00 UTC.", "u": "https://www.yr.no/nb/farevarsler", "s": "MET farevarsel", "d": "2026-11-13T21:40Z", "c": "inc", "n": 1}, {"t": "Storm, B2, 13 november 22:00 UTC til 14 november 09:00 UTC.", "u": "https://www.yr.no/nb/farevarsler", "s": "MET farevarsel", "d": "2026-11-13T21:40Z", "c": "inc", "n": 1}, {"t": "Storm, B3, 13 november 22:00 UTC til 14 november 12:00 UTC.", "u": "https://www.yr.no/nb/farevarsler", "s": "MET farevarsel", "d": "2026-11-13T21:40Z", "c": "inc", "n": 1}, {"t": "Kuling, B5, 15 november 06:00 UTC til 15 november 10:00 UTC.", "u": "https://www.yr.no/nb/farevarsler", "s": "MET farevarsel", "d": "2026-11-13T21:40Z", "c": "inc", "n": 1}, {"t": "Researchers continue to find serious vulnerabilities in internet connected refrigerators", "u": "https://cyberscoop.com/copeland-dixell-refrigeration-vulnerabilities/", "s": "CyberScoop", "d": "2026-11-13T21:20Z", "c": "inc"}, {"t": "Advarer etter flykaoset: – Dette kommer til å skje igjen", "u": "https://www.vg.no/nyheter/i/JnoEV8/reuters-fly-staar-paa-bakken-i-usa", "s": "VG", "d": "2026-11-13T20:58Z", "c": "inc", "n": 1}, {"t": "Industry guidelines for offensive cyber tools unveiled through international Pall Mall Process", "u": "https://cyberscoop.com/pall-mall-process-commercial-spyware-guidelines/", "s": "CyberScoop", "d": "2026-11-13T20:56Z", "c": "gen"}, {"t": "«Dette skal vi klare sammen»", "u": "https://www.vg.no/helse/i/77aEQB/finn-matre-langeland-ble-paakjoert-og-drept-paa-vei-til-skolen", "s": "VG", "d": "2026-11-13T20:26Z", "c": "inc", "n": 1}, {"t": "Studentene slår AI-alarm", "u": "https://www.vg.no/nyheter/i/jvVwO9/student-fikk-stryk-etter-mistanke-om-ai-bruk", "s": "VG", "d": "2026-11-13T18:32Z", "c": "ai", "n": 1}, {"t": "PostgreSQL Patches 52 Flaws, Including 22-Year-Old Bug Enabling Authenticated RCE", "u": "https://thehackernews.com/2026/11/postgresql-patches-52-flaws-including.html", "s": "The Hacker News", "d": "2026-11-13T16:53Z", "c": "gen"}, {"t": "New Mior and Skyfall Attacks Let Rogue Cloud Hosts Steal Secrets From AMD SEV-SNP VMs", "u": "https://thehackernews.com/2026/11/new-mior-and-skyfall-attacks-let-rogue.html", "s": "The Hacker News", "d": "2026-11-13T15:27Z", "c": "gen"}, {"t": "Ukraina har fått landets første kommunikasjonssatellitt i bane", "u": "https://www.digi.no/telekom/ukraina-har-fatt-landets-forste-kommunikasjonssatellitt-i-bane/7183861", "s": "digi.no", "d": "2026-11-13T15:10Z", "c": "gen", "n": 1}, {"t": "FBI Says North Korean Hackers Stole Over $400 Million in Crypto Using Deepfake Video Calls", "u": "https://thehackernews.com/2026/11/fbi-says-north-korean-hackers-stole.html", "s": "The Hacker News", "d": "2026-11-13T14:28Z", "c": "inc"}, {"t": "Trezor Confirms Hidden Implants in CryptoBilis-Sold Wallets That Can Steal Recovery Phrases", "u": "https://thehackernews.com/2026/11/trezor-confirms-hidden-hardware.html", "s": "The Hacker News", "d": "2026-11-13T13:54Z", "c": "inc"}, {"t": "Microsoft-problemene kan skyldes at servere ikke bestod helsesjekk", "u": "https://www.digi.no/it-bransjen/microsoft-problemene-kan-skyldes-at-servere-ikke-bestod-helsesjekk/7184424", "s": "digi.no", "d": "2026-11-13T13:18Z", "c": "inc", "n": 1}, {"t": "Biovåpen og løpsk KI under lupen", "u": "https://www.digi.no/kunstig-intelligens/skal-forberede-norge-pa-ki-trusler/7184250", "s": "digi.no", "d": "2026-11-13T12:45Z", "c": "ai", "n": 1}, {"t": "Rapport: Akselererer KI-utviklingen kraftig til tross for løfter om bremsing", "u": "https://www.digi.no/kunstig-intelligens/rapport-akselererer-ki-utviklingen-kraftig-til-tross-for-lofter-om-bremsing/7182989", "s": "digi.no", "d": "2026-11-13T11:58Z", "c": "ai", "n": 1}, {"t": "When an AI Agent Goes Wrong, Can You Stop It?", "u": "https://thehackernews.com/2026/11/when-ai-agent-goes-wrong-can-you-stop-it.html", "s": "The Hacker News", "d": "2026-11-13T11:52Z", "c": "ai"}, {"t": "Microsoft confirms Windows activation failures after November updates", "u": "https://www.bleepingcomputer.com/news/microsoft/microsoft-confirms-windows-activation-failures-after-november-updates/", "s": "BleepingComputer", "d": "2026-11-13T09:36Z", "c": "gen"}, {"t": "Police arrest 354 suspects in dark web cybercrime crackdown", "u": "https://www.bleepingcomputer.com/news/security/police-arrest-354-vendors-buyers-in-global-cybercrime-crackdown/", "s": "BleepingComputer", "d": "2026-11-13T08:34Z", "c": "gen"}, {"t": "Macfinger ClickFix campaign sends DownTheDRAIN infostealer for macOS, (Fri, Nov 13th)", "u": "https://isc.sans.edu/diary/rss/33518", "s": "SANS ISC", "d": "2026-11-13T03:41Z", "c": "inc"}, {"t": "FBI Says US Seized $1.2 Billion Worth of Cryptocurrency Stolen From Binance", "u": "https://www.securityweek.com/fbi-says-us-seized-1-2-billion-worth-of-cryptocurrency-stolen-from-binance/", "s": "SecurityWeek", "d": "2026-11-13T02:28Z", "c": "gen"}, {"t": "ISC Stormcast For Friday, November 13th, 2026", "u": "https://isc.sans.edu/diary/rss/33516", "s": "SANS ISC", "d": "2026-11-13T02:00Z", "c": "gen"}, {"t": "US seizes North Korean hacking infrastructure, $1.2 billion in cryptocurrency stolen from Binance", "u": "https://cyberscoop.com/us-seizes-north-korea-hacking-infrastructure-binance/", "s": "CyberScoop", "d": "2026-11-13T00:32Z", "c": "gen"}, {"t": "New worm-like 'SCKit' malware targets MSPs in ScreenConnect attacks", "u": "https://www.bleepingcomputer.com/news/security/new-worm-like-sckit-malware-targets-msps-in-screenconnect-attacks/", "s": "BleepingComputer", "d": "2026-11-12T22:53Z", "c": "inc"}, {"t": "Getting Past the Post-Quantum Cryptography Discovery Phase", "u": "https://www.darkreading.com/cybersecurity-operations/getting-past-post-quantum-cryptography-discovery", "s": "Dark Reading", "d": "2026-11-12T22:46Z", "c": "gen"}, {"t": "Hackers compromise 4,800 GitHub accounts to steal cloud credentials", "u": "https://www.bleepingcomputer.com/news/security/hackers-compromise-4-800-github-accounts-to-steal-cloud-credentials/", "s": "BleepingComputer", "d": "2026-11-12T22:25Z", "c": "inc"}, {"t": "Feds announce seizure of $1.2 billion from Binance theft; also takedown of 'FaceStealer' tools", "u": "https://therecord.media/stolen-binance-crypto-recovered-doj-facestealer-disrupted", "s": "The Record", "d": "2026-11-12T21:42Z", "c": "gen"}, {"t": "Cyber Experts Weigh In: How to Fight Artex & AntiFox", "u": "https://www.darkreading.com/cybersecurity-operations/cyber-experts-fight-artex-antifox", "s": "Dark Reading", "d": "2026-11-12T21:18Z", "c": "ai"}, {"t": "Rogue remote-access campaign spread through ScreenConnect add-on, researchers say", "u": "https://cyberscoop.com/connectwise-screenconnect-sckit-attack/", "s": "CyberScoop", "d": "2026-11-12T20:58Z", "c": "inc"}, {"t": "Microsoft 365 Outage Disrupts Outlook, Exchange Online and Teams", "u": "https://www.securityweek.com/microsoft-365-outage-disrupts-outlook-exchange-online-and-teams/", "s": "SecurityWeek", "d": "2026-11-12T20:55Z", "c": "inc"}, {"t": "Massive Microsoft 365 outage disrupts Outlook, Teams, Copilot worldwide", "u": "https://www.bleepingcomputer.com/news/microsoft/massive-microsoft-365-outage-disrupts-outlook-teams-copilot-worldwide/", "s": "BleepingComputer", "d": "2026-11-12T20:15Z", "c": "inc"}, {"t": "Extortion Group Luna Moth Flits Into Law Firms a Second Time", "u": "https://www.darkreading.com/data-privacy/extortion-luna-moth-law-firms-second-time", "s": "Dark Reading", "d": "2026-11-12T20:09Z", "c": "inc"}, {"t": "United to block customers from using AI agents, citing cyber threats", "u": "https://therecord.media/united-airlines-to-block-customers-using-ai-agents", "s": "The Record", "d": "2026-11-12T19:20Z", "c": "ai"}, {"t": "Never be afraid to ask questions", "u": "https://blog.talosintelligence.com/never-be-afraid-to-ask-questions/", "s": "Cisco Talos", "d": "2026-11-12T19:00Z", "c": "gen"}, {"t": "Shipping giant Maersk says recent cyber incident affected legacy system", "u": "https://therecord.media/shipping-giant-maersk-says-recent-incident-affected-legacy-system", "s": "The Record", "d": "2026-11-12T18:28Z", "c": "inc"}, {"t": "Trained to betray: How post-training supply chain attacks hijack coding agents", "u": "https://www.microsoft.com/en-us/security/blog/2026/11/12/trained-to-betray-how-post-training-supply-chain-attacks-hijack-coding-agents/", "s": "Microsoft Security", "d": "2026-11-12T17:00Z", "c": "ai"}, {"t": "Don't put Section 702 spying law renewal in defense bill, groups urge Hill leaders", "u": "https://cyberscoop.com/section-702-reauthorization-ndaa-debate/", "s": "CyberScoop", "d": "2026-11-12T17:00Z", "c": "gen"}, {"t": "European authorities take down SteaIC malware servers for second time this year", "u": "https://therecord.media/european-authorities-take-down-stealic-malware-second-time", "s": "The Record", "d": "2026-11-12T16:21Z", "c": "gen"}, {"t": "ConnectWise investigates ScreenConnect breaches after reports of incidents at nearly 50 organizations", "u": "https://therecord.media/connectwise-screenconnect-breaches-third-party-tool", "s": "The Record", "d": "2026-11-12T16:16Z", "c": "inc"}, {"t": "Apache Patches Critical HTTP Server RCE Found by Anthropic, Google", "u": "https://www.securityweek.com/apache-patches-critical-http-server-rce-found-by-anthropic-google/", "s": "SecurityWeek", "d": "2026-11-12T15:38Z", "c": "gen"}, {"t": "Chrome, Firefox Updates Patch Over 180 Vulnerabilities", "u": "https://www.securityweek.com/chrome-firefox-updates-patch-180-vulnerabilities/", "s": "SecurityWeek", "d": "2026-11-12T13:42Z", "c": "gen"}, {"t": "Attacker Targets 60,000 GitHub Repositories in Credential Theft Campaign", "u": "https://www.securityweek.com/attacker-targets-60000-github-repositories-in-credential-theft-campaign/", "s": "SecurityWeek", "d": "2026-11-12T13:39Z", "c": "inc"}, {"t": "Exploit Attempts for GPUStack Authentication Bypass (CVE-2026-102895), (Thu, Nov 12th)", "u": "https://isc.sans.edu/diary/rss/33514", "s": "SANS ISC", "d": "2026-11-12T11:56Z", "c": "inc"}, {"t": "Inside an AI Attack Against a US Retailer", "u": "https://www.darkreading.com/cyberattacks-data-breaches/inside-ai-attack-us-retailer", "s": "Dark Reading", "d": "2026-11-12T11:00Z", "c": "ai"}, {"t": "ISC Stormcast For Thursday, November 12th, 2026", "u": "https://isc.sans.edu/diary/rss/33512", "s": "SANS ISC", "d": "2026-11-12T02:00Z", "c": "gen"}, {"t": "Chinese AI Project Scouts Spies in Taiwan Chip Industry", "u": "https://www.darkreading.com/threat-intelligence/chinese-ai-project-scouts-spies-taiwan-chip-industry", "s": "Dark Reading", "d": "2026-11-12T01:00Z", "c": "ai"}, {"t": "The global socket: how threat actors are weaponizing GSocket for stealthy C2", "u": "https://www.microsoft.com/en-us/security/blog/2026/11/11/global-socket-how-threat-actors-weaponizing-gsocket-stealthy-c2/", "s": "Microsoft Security", "d": "2026-11-11T19:49Z", "c": "inc"}, {"t": "Microsoft Patch Tuesday November 2026, (Tue, Nov 10th)", "u": "https://isc.sans.edu/diary/rss/33508", "s": "SANS ISC", "d": "2026-11-11T18:28Z", "c": "gen"}, {"t": "Qilin ransomware: Who Runs the Ransomware Group Qilin?", "u": "https://krebsonsecurity.com/2026/11/who-runs-the-ransomware-group-qilin/", "s": "Krebs on Security", "d": "2026-11-11T18:06Z", "c": "gen"}, {"t": "Microsoft Patch Tuesday for November 2026 — Snort rules and prominent vulnerabilities", "u": "https://blog.talosintelligence.com/microsoft-patch-tuesday-for-november-2026/", "s": "Cisco Talos", "d": "2026-11-11T01:41Z", "c": "gen"}, {"t": "Microsoft Fixes Nearly 1,100 Security Vulnerabilities", "u": "https://krebsonsecurity.com/2026/11/microsoft-fixes-nearly-1100-security-vulnerabilities/", "s": "Krebs on Security", "d": "2026-11-10T21:55Z", "c": "gen"}];const WIREAT="2026-11-14T05:52Z";const BUILT="2026-11-14";
 const CATS=["water","food","cook","heat","info","health","hyg","pay","evac","home"];
 const C=Math.ceil;
@@ -2679,7 +2762,7 @@ const DOCS=lsGet(LSK,{})||{};const META=lsGet(LSK+".meta",{})||{};
 function metaSet(k,v){META[k]=v;lsPut(LSK+".meta",META)}
 const LSUBS=[];
 function snapDoc(k){return {exists:k in DOCS,id:k.slice(k.indexOf("/")+1),data:()=>DOCS[k]}}
-function changed(){lsPut(LSK,DOCS);metaSet("changed",Date.now());LSUBS.forEach(f=>f());updDirty()}
+function changed(){askPersist();lsPut(LSK,DOCS);metaSet("changed",Date.now());LSUBS.forEach(f=>f());updDirty()}
 function ldoc(path){return {onSnapshot:cb=>{const f=()=>cb(snapDoc(path));LSUBS.push(f);f()},
   set:async d=>{DOCS[path]=JSON.parse(JSON.stringify(d));changed()},update:async d=>{DOCS[path]={...(DOCS[path]||{}),...d};changed()},delete:async()=>{delete DOCS[path];changed()}}}
 const localDB={doc:ldoc,collection:c=>({doc:id=>ldoc(c+"/"+id),
@@ -2693,7 +2776,8 @@ $("#dclr").onclick=e=>{const b=e.currentTarget;if(b.dataset.armed!=="1"){b.datas
   Object.keys(DOCS).forEach(k=>delete DOCS[k]);try{localStorage.removeItem(LSK);localStorage.removeItem(LSK+".meta")}catch(_){}
   META.changed=0;META.exported=0;hh={a:0,k:0,i:0,u:0,D:7};state={};custom=[];outage=null;LSUBS.forEach(f=>f());renderAll();updDirty();b.dataset.armed="";$("#djmsg").textContent=t("cleared")};
 
-renderAll();
+renderAll();inShow();
+document.getElementById("inbtn").onclick=async()=>{if(!inPrompt)return;inPrompt.prompt();try{await inPrompt.userChoice}catch(e){}inPrompt=null;inShow()};
 (()=>{
   db=localDB;
   const busy=()=>{const a=document.activeElement;return a&&a.closest&&a.closest("#list")&&a.type!=="checkbox"};

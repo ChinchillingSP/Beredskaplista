@@ -181,5 +181,10 @@ w_age:"{s} sekunder siden siste oppdatering",
 th_dark:"Bytt til mørk modus",
 th_light:"Bytt til lys modus",
 upd:"Sist oppdatert: {d}",
-exportOffline:"Uten nett: Excel eller PDF virker bare hvis du har lastet ned det formatet før, med nett. Lista og eksport av data (.json) virker."
+exportOffline:"Uten nett: Excel eller PDF virker bare hvis du har lastet ned det formatet før, med nett. Lista og eksport av data (.json) virker.",
+in_title:"Installer appen",
+in_text:"Legg lista på hjemskjermen. Da åpner den uten nett, som en vanlig app, og nettleseren sletter ikke dataene dine så lett.",
+in_btn:"Installer appen",
+in_ios:"iPhone/iPad: trykk Del-knappen i Safari og velg «Legg til på Hjem-skjerm».",
+in_iosData:"Viktig på iPhone: appen deler ikke data med Safari. Installer først og fyll ut lista i appen, eller eksporter dataene og importer dem i appen."
 };
