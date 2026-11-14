@@ -76,7 +76,7 @@ u_days:"dni",
 u_pers:"os.",
 bo_title:"Gdy zabraknie prądu",
 bo_h1:"Pierwsza godzina",
-bo_1a:"Sprawdź, czy sąsiedzi też nie mają prądu. Słuchaj NRK P1 w radiu na baterie.",
+bo_1a:"Sprawdź, czy sąsiedzi też nie mają prądu. Słuchaj NRK P1 w radiu na baterie. Albo użyj radia w samochodzie, ale nigdy z włączonym silnikiem w zamkniętym garażu.",
 bo_1b:"Wyłącz kuchenkę, piekarnik i żelazko, żeby nic nie włączyło się samo po powrocie prądu.",
 bo_1c:"Nie otwieraj lodówki i zamrażarki. Jedzenie pozostanie zimne przez wiele godzin.",
 bo_h2:"Pierwsza doba",
@@ -186,5 +186,7 @@ in_title:"Zainstaluj aplikację",
 in_text:"Dodaj listę do ekranu głównego. Wtedy otwiera się bez sieci, jak zwykła aplikacja, a przeglądarka rzadziej usuwa twoje dane.",
 in_btn:"Zainstaluj aplikację",
 in_ios:"iPhone/iPad: w Safari stuknij przycisk Udostępnij i wybierz „Do ekranu początkowego”.",
-in_iosData:"Ważne na iPhonie: aplikacja nie dzieli danych z Safari. Najpierw zainstaluj i wypełnij listę w aplikacji albo wyeksportuj dane i zaimportuj je w aplikacji."
+in_iosData:"Ważne na iPhonie: aplikacja nie dzieli danych z Safari. Najpierw zainstaluj i wypełnij listę w aplikacji albo wyeksportuj dane i zaimportuj je w aplikacji.",
+off_msg:"Brak sieci. Oglądasz zapisaną kopię (wersja z {d}).",
+dirs:"północ|północny wschód|wschód|południowy wschód|południe|południowy zachód|zachód|północny zachód"
 };

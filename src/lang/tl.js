@@ -76,7 +76,7 @@ u_days:"araw",
 u_pers:"tao",
 bo_title:"Kapag nawalan ng kuryente",
 bo_h1:"Unang oras",
-bo_1a:"Alamin kung wala ring kuryente ang mga kapitbahay. Makinig sa NRK P1 sa radyong de-baterya.",
+bo_1a:"Alamin kung wala ring kuryente ang mga kapitbahay. Makinig sa NRK P1 sa radyong de-baterya. O gamitin ang radyo ng kotse, pero huwag kailanman nang umaandar ang makina sa saradong garahe.",
 bo_1b:"Patayin ang kalan, oven at plantsa para walang kusang bubukas pagbalik ng kuryente.",
 bo_1c:"Huwag buksan ang ref at freezer. Mananatiling malamig ang pagkain nang maraming oras.",
 bo_h2:"Unang araw",
@@ -186,5 +186,7 @@ in_title:"I-install ang app",
 in_text:"Idagdag ang listahan sa home screen. Bubukas ito nang walang internet, gaya ng karaniwang app, at hindi basta mabubura ng browser ang iyong data.",
 in_btn:"I-install ang app",
 in_ios:"iPhone/iPad: pindutin ang Share button sa Safari at piliin ang “Add to Home Screen”.",
-in_iosData:"Mahalaga sa iPhone: hindi nagbabahagi ng data ang app sa Safari. Mag-install muna at punan ang listahan sa app, o i-export ang data at i-import ito sa app."
+in_iosData:"Mahalaga sa iPhone: hindi nagbabahagi ng data ang app sa Safari. Mag-install muna at punan ang listahan sa app, o i-export ang data at i-import ito sa app.",
+off_msg:"Walang koneksyon. Ang nakikita mo ay ang naka-save na kopya (bersyon {d}).",
+dirs:"hilaga|hilagang-silangan|silangan|timog-silangan|timog|timog-kanluran|kanluran|hilagang-kanluran"
 };

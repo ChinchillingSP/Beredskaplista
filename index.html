@@ -152,6 +152,12 @@ a{color:var(--navy)}
 .disc{border:1px solid var(--line,rgba(127,127,127,.35));border-radius:10px;padding:12px 14px;font-size:13px;color:var(--muted);margin-top:8px}
 .disc h2{font-size:14px;margin:0 0 6px;color:var(--fg)}.disc p{margin:4px 0}
 .data{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.offbar{background:var(--navy);color:var(--bg);border-radius:10px;padding:8px 12px;font-size:14px;font-weight:700}
+.sos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.sos a{display:grid;justify-items:center;text-decoration:none;border:2px solid var(--accent);border-radius:10px;padding:6px 4px;color:var(--fg);background:var(--surface);font-size:13px;text-align:center}
+.sos b{font-family:var(--display);font-size:26px;font-weight:800;color:var(--accent);line-height:1.1}
+.shl .geo{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:4px 14px;font-size:15px;color:var(--fg)}
+.shl .geo b{font-variant-numeric:tabular-nums;user-select:all}
 .unsaved{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:#fff4d6;color:#4a3500;border:1px solid #e0b84a;border-radius:10px;padding:8px 12px;font-size:14px}
 .tiny{font-size:11px;font-style:italic;color:var(--muted)}
 p.tiny{font-size:12px;margin:0}
@@ -162,13 +168,14 @@ p.tiny{font-size:12px;margin:0}
 .thbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.meter i{transition:none}}
 </style>
-<script>try{var _t=localStorage.getItem("beredskap.theme");if(_t=="dark"||_t=="light")document.documentElement.dataset.theme=_t}catch(e){}</script>
+<script>try{var _t=localStorage.getItem("beredskap.theme");if(_t=="dark"||_t=="light")document.documentElement.dataset.theme=_t;else if(navigator.onLine===false)document.documentElement.dataset.theme="dark"}catch(e){}</script>
 
 <div class="wrap">
   <div class="top">
     <div class="langrow"><div class="langs" id="langs" role="group" aria-label="Språk / Language"></div><button type="button" class="thbtn" id="thbtn"></button></div>
     <div class="tabs" id="tabs" role="tablist"></div>
   </div>
+  <div class="offbar" id="offbar" role="status" hidden></div>
   <div class="unsaved" id="unsaved" hidden><span data-t="un_msg"></span><button type="button" class="primary" id="unbtn" data-t="un_btn"></button></div>
 
   <div>
@@ -220,6 +227,7 @@ p.tiny{font-size:12px;margin:0}
 
   <section id="v-blackout" class="view" hidden>
     <div style="display:grid;gap:14px">
+      <div class="sos"><a href="tel:110"><b>110</b><span data-t="n110"></span></a><a href="tel:112"><b>112</b><span data-t="n112"></span></a><a href="tel:113"><b>113</b><span data-t="n113"></span></a></div>
       <div class="panel">
         <h2 data-t="oc_title"></h2>
         <p class="muted" data-t="oc_intro"></p>
@@ -390,7 +398,7 @@ u_days:"dager",
 u_pers:"pers.",
 bo_title:"Når strømmen går",
 bo_h1:"Første time",
-bo_1a:"Sjekk om naboene også er uten strøm. Lytt til NRK P1 på batteriradio.",
+bo_1a:"Sjekk om naboene også er uten strøm. Lytt til NRK P1 på batteriradio. Eller bruk bilradioen, men aldri med motoren i gang i en lukket garasje.",
 bo_1b:"Skru av komfyr, ovn og strykejern, så ingenting starter av seg selv når strømmen kommer tilbake.",
 bo_1c:"Hold kjøleskap og fryser lukket. Maten holder seg kald i mange timer.",
 bo_h2:"Første døgn",
@@ -500,7 +508,9 @@ in_title:"Installer appen",
 in_text:"Legg lista på hjemskjermen. Da åpner den uten nett, som en vanlig app, og nettleseren sletter ikke dataene dine så lett.",
 in_btn:"Installer appen",
 in_ios:"iPhone/iPad: trykk Del-knappen i Safari og velg «Legg til på Hjem-skjerm».",
-in_iosData:"Viktig på iPhone: appen deler ikke data med Safari. Installer først og fyll ut lista i appen, eller eksporter dataene og importer dem i appen."
+in_iosData:"Viktig på iPhone: appen deler ikke data med Safari. Installer først og fyll ut lista i appen, eller eksporter dataene og importer dem i appen.",
+off_msg:"Uten nett. Du ser den lagrede kopien (versjon {d}).",
+dirs:"nord|nordøst|øst|sørøst|sør|sørvest|vest|nordvest"
 };
 
 L.en={
@@ -581,7 +591,7 @@ u_days:"days",
 u_pers:"people",
 bo_title:"When the power goes",
 bo_h1:"First hour",
-bo_1a:"Check whether the neighbours have lost power too. Listen to NRK P1 on a battery radio.",
+bo_1a:"Check whether the neighbours have lost power too. Listen to NRK P1 on a battery radio. Or use the car radio, but never with the engine running in a closed garage.",
 bo_1b:"Switch off the cooker, oven and iron so nothing starts by itself when the power returns.",
 bo_1c:"Keep the fridge and freezer closed. Food stays cold for many hours.",
 bo_h2:"First day",
@@ -691,7 +701,9 @@ in_title:"Install the app",
 in_text:"Add the list to your home screen. It then opens without network, like a normal app, and the browser is less likely to delete your data.",
 in_btn:"Install the app",
 in_ios:"iPhone/iPad: tap the Share button in Safari and choose “Add to Home Screen”.",
-in_iosData:"Important on iPhone: the app does not share data with Safari. Install first and fill in the list in the app, or export your data and import it in the app."
+in_iosData:"Important on iPhone: the app does not share data with Safari. Install first and fill in the list in the app, or export your data and import it in the app.",
+off_msg:"Offline. You are viewing the saved copy (version {d}).",
+dirs:"north|north-east|east|south-east|south|south-west|west|north-west"
 };
 
 L.es={
@@ -772,7 +784,7 @@ u_days:"días",
 u_pers:"pers.",
 bo_title:"Cuando se va la luz",
 bo_h1:"Primera hora",
-bo_1a:"Mira si los vecinos también están sin luz. Escucha NRK P1 en una radio de pilas.",
+bo_1a:"Mira si los vecinos también están sin luz. Escucha NRK P1 en una radio de pilas. O usa la radio del coche, pero nunca con el motor encendido en un garaje cerrado.",
 bo_1b:"Apaga la placa, el horno y la plancha para que nada se encienda solo al volver la luz.",
 bo_1c:"No abras la nevera ni el congelador. La comida se mantiene fría muchas horas.",
 bo_h2:"Primer día",
@@ -882,7 +894,9 @@ in_title:"Instala la app",
 in_text:"Añade la lista a la pantalla de inicio. Así abre sin conexión, como una app normal, y el navegador no borra tus datos tan fácilmente.",
 in_btn:"Instalar la app",
 in_ios:"iPhone/iPad: pulsa el botón Compartir de Safari y elige «Añadir a pantalla de inicio».",
-in_iosData:"Importante en iPhone: la app no comparte datos con Safari. Instálala primero y rellena la lista en la app, o exporta tus datos e impórtalos en la app."
+in_iosData:"Importante en iPhone: la app no comparte datos con Safari. Instálala primero y rellena la lista en la app, o exporta tus datos e impórtalos en la app.",
+off_msg:"Sin conexión. Estás viendo la copia guardada (versión del {d}).",
+dirs:"norte|noreste|este|sureste|sur|suroeste|oeste|noroeste"
 };
 
 L.pl={
@@ -963,7 +977,7 @@ u_days:"dni",
 u_pers:"os.",
 bo_title:"Gdy zabraknie prądu",
 bo_h1:"Pierwsza godzina",
-bo_1a:"Sprawdź, czy sąsiedzi też nie mają prądu. Słuchaj NRK P1 w radiu na baterie.",
+bo_1a:"Sprawdź, czy sąsiedzi też nie mają prądu. Słuchaj NRK P1 w radiu na baterie. Albo użyj radia w samochodzie, ale nigdy z włączonym silnikiem w zamkniętym garażu.",
 bo_1b:"Wyłącz kuchenkę, piekarnik i żelazko, żeby nic nie włączyło się samo po powrocie prądu.",
 bo_1c:"Nie otwieraj lodówki i zamrażarki. Jedzenie pozostanie zimne przez wiele godzin.",
 bo_h2:"Pierwsza doba",
@@ -1073,7 +1087,9 @@ in_title:"Zainstaluj aplikację",
 in_text:"Dodaj listę do ekranu głównego. Wtedy otwiera się bez sieci, jak zwykła aplikacja, a przeglądarka rzadziej usuwa twoje dane.",
 in_btn:"Zainstaluj aplikację",
 in_ios:"iPhone/iPad: w Safari stuknij przycisk Udostępnij i wybierz „Do ekranu początkowego”.",
-in_iosData:"Ważne na iPhonie: aplikacja nie dzieli danych z Safari. Najpierw zainstaluj i wypełnij listę w aplikacji albo wyeksportuj dane i zaimportuj je w aplikacji."
+in_iosData:"Ważne na iPhonie: aplikacja nie dzieli danych z Safari. Najpierw zainstaluj i wypełnij listę w aplikacji albo wyeksportuj dane i zaimportuj je w aplikacji.",
+off_msg:"Brak sieci. Oglądasz zapisaną kopię (wersja z {d}).",
+dirs:"północ|północny wschód|wschód|południowy wschód|południe|południowy zachód|zachód|północny zachód"
 };
 
 L.lt={
@@ -1154,7 +1170,7 @@ u_days:"d.",
 u_pers:"asm.",
 bo_title:"Kai dingsta elektra",
 bo_h1:"Pirmoji valanda",
-bo_1a:"Patikrinkite, ar kaimynai taip pat be elektros. Klausykite NRK P1 per radiją su baterijomis.",
+bo_1a:"Patikrinkite, ar kaimynai taip pat be elektros. Klausykite NRK P1 per radiją su baterijomis. Arba naudokite automobilio radiją, bet niekada su veikiančiu varikliu uždarame garaže.",
 bo_1b:"Išjunkite viryklę, orkaitę ir lygintuvą, kad niekas neįsijungtų grįžus elektrai.",
 bo_1c:"Laikykite šaldytuvą ir šaldiklį uždarytus. Maistas išliks šaltas daug valandų.",
 bo_h2:"Pirmoji para",
@@ -1264,7 +1280,9 @@ in_title:"Įdiekite programėlę",
 in_text:"Pridėkite sąrašą prie pradžios ekrano. Tada jis atsidaro be ryšio, kaip įprasta programėlė, o naršyklė rečiau ištrina jūsų duomenis.",
 in_btn:"Įdiegti programėlę",
 in_ios:"iPhone/iPad: Safari paspauskite mygtuką „Bendrinti“ ir pasirinkite „Įtraukti į pradžios ekraną“.",
-in_iosData:"Svarbu iPhone: programėlė nesidalija duomenimis su Safari. Pirmiausia įdiekite ir pildykite sąrašą programėlėje arba eksportuokite duomenis ir importuokite juos programėlėje."
+in_iosData:"Svarbu iPhone: programėlė nesidalija duomenimis su Safari. Pirmiausia įdiekite ir pildykite sąrašą programėlėje arba eksportuokite duomenis ir importuokite juos programėlėje.",
+off_msg:"Nėra ryšio. Matote išsaugotą kopiją (versija {d}).",
+dirs:"šiaurė|šiaurės rytai|rytai|pietryčiai|pietūs|pietvakariai|vakarai|šiaurės vakarai"
 };
 
 L.uk={
@@ -1345,7 +1363,7 @@ u_days:"дн.",
 u_pers:"осіб",
 bo_title:"Коли зникає світло",
 bo_h1:"Перша година",
-bo_1a:"Перевірте, чи сусіди теж без світла. Слухайте NRK P1 на радіо з батарейками.",
+bo_1a:"Перевірте, чи сусіди теж без світла. Слухайте NRK P1 на радіо з батарейками. Або слухайте радіо в автомобілі, але ніколи з увімкненим двигуном у зачиненому гаражі.",
 bo_1b:"Вимкніть плиту, духовку й праску, щоб нічого не ввімкнулося саме, коли світло повернеться.",
 bo_1c:"Не відчиняйте холодильник і морозилку. Їжа залишиться холодною багато годин.",
 bo_h2:"Перша доба",
@@ -1455,7 +1473,9 @@ in_title:"Встановіть застосунок",
 in_text:"Додайте список на головний екран. Тоді він відкривається без мережі, як звичайний застосунок, і браузер рідше видаляє ваші дані.",
 in_btn:"Встановити застосунок",
 in_ios:"iPhone/iPad: у Safari натисніть кнопку «Поширити» й виберіть «На початковий екран».",
-in_iosData:"Важливо на iPhone: застосунок не ділиться даними з Safari. Спершу встановіть і заповнюйте список у застосунку або експортуйте дані й імпортуйте їх у застосунку."
+in_iosData:"Важливо на iPhone: застосунок не ділиться даними з Safari. Спершу встановіть і заповнюйте список у застосунку або експортуйте дані й імпортуйте їх у застосунку.",
+off_msg:"Немає мережі. Ви бачите збережену копію (версія від {d}).",
+dirs:"північ|північний схід|схід|південний схід|південь|південний захід|захід|північний захід"
 };
 
 L.ar={
@@ -1536,7 +1556,7 @@ u_days:"أيام",
 u_pers:"أشخاص",
 bo_title:"عند انقطاع الكهرباء",
 bo_h1:"الساعة الأولى",
-bo_1a:"تحقق إن كان الجيران بلا كهرباء أيضًا. استمع إلى NRK P1 على راديو بالبطاريات.",
+bo_1a:"تحقق إن كان الجيران بلا كهرباء أيضًا. استمع إلى NRK P1 على راديو بالبطاريات. أو استخدم راديو السيارة، لكن لا تشغّل المحرك أبدًا داخل مرآب مغلق.",
 bo_1b:"أطفئ الموقد والفرن والمكواة كي لا يعمل شيء وحده عند عودة الكهرباء.",
 bo_1c:"أبقِ الثلاجة والمجمّد مغلقين. يبقى الطعام باردًا لساعات طويلة.",
 bo_h2:"اليوم الأول",
@@ -1646,7 +1666,9 @@ in_title:"ثبّت التطبيق",
 in_text:"أضف القائمة إلى الشاشة الرئيسية. عندها تفتح بدون اتصال مثل تطبيق عادي، ويقلّ احتمال أن يحذف المتصفح بياناتك.",
 in_btn:"تثبيت التطبيق",
 in_ios:"آيفون/آيباد: اضغط زر المشاركة في Safari واختر «إضافة إلى الشاشة الرئيسية».",
-in_iosData:"مهم على آيفون: التطبيق لا يشارك البيانات مع Safari. ثبّته أولًا واملأ القائمة داخل التطبيق، أو صدّر بياناتك واستوردها في التطبيق."
+in_iosData:"مهم على آيفون: التطبيق لا يشارك البيانات مع Safari. ثبّته أولًا واملأ القائمة داخل التطبيق، أو صدّر بياناتك واستوردها في التطبيق.",
+off_msg:"لا يوجد اتصال. أنت ترى النسخة المحفوظة (إصدار {d}).",
+dirs:"شمال|شمال شرق|شرق|جنوب شرق|جنوب|جنوب غرب|غرب|شمال غرب"
 };
 
 L.so={
@@ -1727,7 +1749,7 @@ u_days:"maalmood",
 u_pers:"qof",
 bo_title:"Marka korontadu go'do",
 bo_h1:"Saacadda koowaad",
-bo_1a:"Hubi in deriskuna koronto la'aan yihiin. Ka dhegayso NRK P1 raadiye baytari ah.",
+bo_1a:"Hubi in deriskuna koronto la'aan yihiin. Ka dhegayso NRK P1 raadiye baytari ah. Ama isticmaal raadiyaha baabuurka, laakiin weligaa ha shidin mishiinka gaaraash xiran.",
 bo_1b:"Dami foornada, tanuurka iyo kaawiyadda si aysan isu shidin marka korontadu soo laabato.",
 bo_1c:"Ha furin qaboojiyaha iyo barafeeyaha. Cuntadu saacado badan ayay qabow ahaanaysaa.",
 bo_h2:"Maalinta koowaad",
@@ -1837,7 +1859,9 @@ in_title:"Ku rakib app-ka",
 in_text:"Liiska ku dar shaashadda hore. Markaas wuxuu furmaa internet la'aan, sida app caadi ah, browser-kuna si fudud uma tirtiro xogtaada.",
 in_btn:"Ku rakib app-ka",
 in_ios:"iPhone/iPad: Safari ku riix badhanka La wadaag kadibna dooro «Ku dar Shaashadda Hore».",
-in_iosData:"Muhiim iPhone: app-ku xog lama wadaago Safari. Marka hore rakib oo liiska ku buuxi app-ka, ama xogtaada dhoofi oo app-ka ku soo dhoofso."
+in_iosData:"Muhiim iPhone: app-ku xog lama wadaago Safari. Marka hore rakib oo liiska ku buuxi app-ka, ama xogtaada dhoofi oo app-ka ku soo dhoofso.",
+off_msg:"Internet ma jiro. Waxaad arkaysaa nuqulka la kaydiyay (nooca {d}).",
+dirs:"waqooyi|waqooyi-bari|bari|koonfur-bari|koonfur|koonfur-galbeed|galbeed|waqooyi-galbeed"
 };
 
 L.ti={
@@ -1918,7 +1942,7 @@ u_days:"መዓልቲ",
 u_pers:"ሰብ",
 bo_title:"ኤሌክትሪክ ምስ ዝቋረጽ",
 bo_h1:"ቀዳመይቲ ሰዓት",
-bo_1a:"ጎረባብቲ ውን ኤሌክትሪክ እንተዘይብሎም ርኣዩ። ብባትሪ ሬድዮ NRK P1 ስምዑ።",
+bo_1a:"ጎረባብቲ ውን ኤሌክትሪክ እንተዘይብሎም ርኣዩ። ብባትሪ ሬድዮ NRK P1 ስምዑ። ወይ ናይ መኪና ራድዮ ተጠቐሙ፡ ግን ኣብ ዕጹው ጋራጅ ሞተር ኣጥፊኡ ጥራይ።",
 bo_1b:"ኤሌክትሪክ ምስ ተመልሰ ባዕሉ ከይውላዕ ምድጃ፡ ፎርኖን ሓዲድን ኣጥፍኡ።",
 bo_1c:"ፍሪጅን ፍሪዘርን ኣይትኽፈቱ። መግቢ ንብዙሕ ሰዓታት ዝሑል ይጸንሕ።",
 bo_h2:"ቀዳመይቲ መዓልቲ",
@@ -2028,7 +2052,9 @@ in_title:"ኣፕ ኣእትዉ",
 in_text:"ነቲ ዝርዝር ኣብ ቀንዲ ስክሪን ወስኹዎ። ሽዑ ከም ንቡር ኣፕ ብዘይ መርበብ ይኽፈት፡ መርበብ-ሓባሪ ድማ ሓበሬታኹም ብቐሊሉ ኣይድምስሶን።",
 in_btn:"ኣፕ ኣእትው",
 in_ios:"iPhone/iPad፦ ኣብ Safari ናይ ምክፋል መልጎም ጠውቑ፡ «ናብ ቀንዲ ስክሪን ወስኽ» ምረጹ።",
-in_iosData:"ኣብ iPhone ኣገዳሲ፦ እቲ ኣፕ ምስ Safari ሓበሬታ ኣይካፈልን። ቅድም ኣእትዉ ድሕሪኡ ኣብ ኣፕ ዝርዝር ምልኡ፡ ወይ ሓበሬታኹም ኣውጺኹም ኣብ ኣፕ ኣእትዉ።"
+in_iosData:"ኣብ iPhone ኣገዳሲ፦ እቲ ኣፕ ምስ Safari ሓበሬታ ኣይካፈልን። ቅድም ኣእትዉ ድሕሪኡ ኣብ ኣፕ ዝርዝር ምልኡ፡ ወይ ሓበሬታኹም ኣውጺኹም ኣብ ኣፕ ኣእትዉ።",
+off_msg:"መርበብ የለን። ዝተዓቀበ ቅዳሕ ትርእዩ ኣለኹም (ስሪት {d})።",
+dirs:"ሰሜን|ሰሜን ምብራቕ|ምብራቕ|ደቡብ ምብራቕ|ደቡብ|ደቡብ ምዕራብ|ምዕራብ|ሰሜን ምዕራብ"
 };
 
 L.tl={
@@ -2109,7 +2135,7 @@ u_days:"araw",
 u_pers:"tao",
 bo_title:"Kapag nawalan ng kuryente",
 bo_h1:"Unang oras",
-bo_1a:"Alamin kung wala ring kuryente ang mga kapitbahay. Makinig sa NRK P1 sa radyong de-baterya.",
+bo_1a:"Alamin kung wala ring kuryente ang mga kapitbahay. Makinig sa NRK P1 sa radyong de-baterya. O gamitin ang radyo ng kotse, pero huwag kailanman nang umaandar ang makina sa saradong garahe.",
 bo_1b:"Patayin ang kalan, oven at plantsa para walang kusang bubukas pagbalik ng kuryente.",
 bo_1c:"Huwag buksan ang ref at freezer. Mananatiling malamig ang pagkain nang maraming oras.",
 bo_h2:"Unang araw",
@@ -2219,7 +2245,9 @@ in_title:"I-install ang app",
 in_text:"Idagdag ang listahan sa home screen. Bubukas ito nang walang internet, gaya ng karaniwang app, at hindi basta mabubura ng browser ang iyong data.",
 in_btn:"I-install ang app",
 in_ios:"iPhone/iPad: pindutin ang Share button sa Safari at piliin ang “Add to Home Screen”.",
-in_iosData:"Mahalaga sa iPhone: hindi nagbabahagi ng data ang app sa Safari. Mag-install muna at punan ang listahan sa app, o i-export ang data at i-import ito sa app."
+in_iosData:"Mahalaga sa iPhone: hindi nagbabahagi ng data ang app sa Safari. Mag-install muna at punan ang listahan sa app, o i-export ang data at i-import ito sa app.",
+off_msg:"Walang koneksyon. Ang nakikita mo ay ang naka-save na kopya (bersyon {d}).",
+dirs:"hilaga|hilagang-silangan|silangan|timog-silangan|timog|timog-kanluran|kanluran|hilagang-kanluran"
 };
 
 L.ja={
@@ -2300,7 +2328,7 @@ u_days:"日",
 u_pers:"人",
 bo_title:"停電したら",
 bo_h1:"最初の1時間",
-bo_1a:"近所も停電しているか確認し、電池式ラジオでNRK P1を聞きましょう。",
+bo_1a:"近所も停電しているか確認し、電池式ラジオでNRK P1を聞きましょう。または車のラジオを使いましょう。ただし、閉め切った車庫でエンジンをかけたままにしないこと。",
 bo_1b:"電気が戻ったときに勝手に動かないよう、コンロ・オーブン・アイロンのスイッチを切りましょう。",
 bo_1c:"冷蔵庫と冷凍庫は開けないこと。食品は何時間も冷たいままです。",
 bo_h2:"1日目",
@@ -2410,7 +2438,9 @@ in_title:"アプリをインストール",
 in_text:"リストをホーム画面に追加しましょう。通常のアプリのようにオフラインで開き、ブラウザがデータを消しにくくなります。",
 in_btn:"アプリをインストール",
 in_ios:"iPhone/iPad：Safariの共有ボタンをタップし、「ホーム画面に追加」を選びます。",
-in_iosData:"iPhoneでの注意：アプリはSafariとデータを共有しません。先にインストールしてアプリでリストを入力するか、データをエクスポートしてアプリでインポートしてください。"
+in_iosData:"iPhoneでの注意：アプリはSafariとデータを共有しません。先にインストールしてアプリでリストを入力するか、データをエクスポートしてアプリでインポートしてください。",
+off_msg:"オフラインです。保存されたコピー（{d}版）を表示しています。",
+dirs:"北|北東|東|南東|南|南西|西|北西"
 };
 
 const ORDER=["nb","en","es","pl","lt","uk","ar","so","ti","tl","ja"];
@@ -2421,6 +2451,9 @@ const LIBS={xlsx:"xlsx/0.18.5/xlsx.full.min.js",jspdf:"jspdf/2.5.1/jspdf.umd.min
 function lib(k){return libP[k]||(libP[k]=new Promise((ok,no)=>{const sc=document.createElement("script");sc.src=LIBBASE+LIBS[k];sc.onload=ok;sc.onerror=()=>{delete libP[k];sc.remove();no(new Error("lib "+k))};document.head.appendChild(sc)}))}
 if(USE_SW&&"serviceWorker" in navigator)navigator.serviceWorker.register("./sw.js").catch(()=>{});
 // "Install the app": Android/desktop Chrome use the browser's own prompt; iPhone/iPad get the Share → Add to Home Screen steps
+function offShow(){const b=document.getElementById("offbar");if(!b)return;const off=navigator.onLine===false;b.hidden=!off;
+  if(off){let d=BUILT||"";try{d=new Date(BUILT+"T12:00:00Z").toLocaleDateString(lang==="nb"?"nb-NO":lang,{day:"numeric",month:"numeric",year:"numeric"})}catch(e){}b.textContent=fmt(t("off_msg"),{d})}}
+window.addEventListener("online",offShow);window.addEventListener("offline",offShow);
 let inPrompt=null;
 function inShow(){const el=document.getElementById("install");if(!el||!USE_SW)return;
   const installed=matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
@@ -2461,7 +2494,7 @@ function r1(x){return Math.ceil(x*10)/10}
 
 const $=s=>document.querySelector(s);
 let lang="nb"; try{const s=localStorage.getItem("lang");if(ORDER.includes(s))lang=s;}catch(e){}
-let tab="overview"; if(location.hash&&["overview","list","blackout","shelter","numbers","calendar","wire","sources"].includes(location.hash.slice(1)))tab=location.hash.slice(1);
+let tab=navigator.onLine===false?"blackout":"overview"; if(location.hash&&["overview","list","blackout","shelter","numbers","calendar","wire","sources"].includes(location.hash.slice(1)))tab=location.hash.slice(1);
 let hh={a:0,k:0,i:0,u:0,D:7};
 let state={}; let custom=[]; let db=null; let loaded=false;
 let calMonth=new Date();calMonth.setDate(1);
@@ -2498,6 +2531,7 @@ function applyStatic(){
   document.querySelectorAll(".view").forEach(v=>v.hidden=v.id!=="v-"+tab);
   thLabel();
   if(BUILT){let d;try{d=new Date(BUILT+"T12:00:00Z").toLocaleDateString(lang==="nb"?"nb-NO":lang,{day:"numeric",month:"long",year:"numeric"})}catch(e){d=BUILT}$("#upd").textContent=fmt(t("upd"),{d})}
+  runTimers();offShow();
   requestAnimationFrame(showSel);
 }
 const TH_SUN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
@@ -2598,10 +2632,13 @@ $("#addform").addEventListener("submit",async e=>{e.preventDefault();if(!db){set
 function hav(a,b,c,d){const R=6371,r=x=>x*Math.PI/180;const dl=r(c-a),dn=r(d-b);const h=Math.sin(dl/2)**2+Math.cos(r(a))*Math.cos(r(c))*Math.sin(dn/2)**2;return 2*R*Math.asin(Math.sqrt(h))}
 function norm(s){return String(s).toLowerCase().normalize("NFC").replace(/\s+/g," ").trim()}
 let shLast=null; try{shLast=JSON.parse(localStorage.getItem("shLast")||"null")}catch(e){}
+// Compass direction from the searched point to a shelter, for use without a map
+function dir8(a1,o1,a2,o2){const r=Math.PI/180,y=Math.sin((o2-o1)*r)*Math.cos(a2*r),x=Math.cos(a1*r)*Math.sin(a2*r)-Math.sin(a1*r)*Math.cos(a2*r)*Math.cos((o2-o1)*r);
+  const b=(Math.atan2(y,x)/r+360)%360;return t("dirs").split("|")[Math.round(b/45)%8]}
 function shShow(lat,lon,label){
   shLast={lat,lon,label};try{localStorage.setItem("shLast",JSON.stringify(shLast))}catch(e){}
   const r=SHELTERS.map(s=>({...s,km:hav(lat,lon,s.lat,s.lon)})).sort((a,b)=>a.km-b.km).slice(0,3);
-  $("#shres").innerHTML=`<h3>${esc(fmt(t("sh_res"),{q:label}))}</h3><ul class="shl">${r.map(s=>`<li><span class="km">${nf(Math.round(s.km*10)/10)} km</span><div><span class="ad">${esc(s.adresse)}</span><small>${esc(s.sted)} · ${nf(s.plasser)} ${esc(t("sh_places"))}</small></div><a href="https://www.openstreetmap.org/?mlat=${s.lat}&mlon=${s.lon}#map=17/${s.lat}/${s.lon}" target="_blank" rel="noopener">${esc(t("sh_open"))}</a></li>`).join("")}</ul>`;
+  $("#shres").innerHTML=`<h3>${esc(fmt(t("sh_res"),{q:label}))}</h3><ul class="shl">${r.map(s=>`<li><span class="km">${nf(Math.round(s.km*10)/10)} km</span><div><span class="ad">${esc(s.adresse)}</span><small>${esc(s.sted)} · ${nf(s.plasser)} ${esc(t("sh_places"))}</small></div><div class="geo"><span>${esc(dir8(lat,lon,s.lat,s.lon))}</span><b>${s.lat.toFixed(5)}, ${s.lon.toFixed(5)}</b></div><a href="https://www.openstreetmap.org/?mlat=${s.lat}&mlon=${s.lon}#map=17/${s.lat}/${s.lon}" target="_blank" rel="noopener">${esc(t("sh_open"))}</a></li>`).join("")}</ul>`;
 }
 function shPick(list){ $("#shres").innerHTML=`<p>${esc(t("sh_pick"))}</p><div class="picks">${list.map(x=>`<button type="button" class="ghost" data-pick="${esc(x.v)}">${esc(x.l)}</button>`).join("")}</div>`; }
 function shSearch(q){
@@ -2723,7 +2760,7 @@ function renderClock(){
   if(outage){const d=new Date(outage);let txt;try{txt=d.toLocaleString(lang==="nb"?"nb-NO":lang,{dateStyle:"medium",timeStyle:"short"})}catch(e){txt=d.toISOString()}
     $("#ocsince").textContent=fmt(t("oc_since"),{x:txt});if(document.activeElement!==$("#ocin"))$("#ocin").value=localInput(d)}
   else{$("#ocsince").textContent=t("oc_none")}
-  tick();clearInterval(ocTimer);if(outage)ocTimer=setInterval(tick,1000);
+  tick();runTimers();
 }
 async function setOutage(v){outage=v;renderClock();
   try{await db.doc("outage/main").set({start:v||""})}catch(e){}}
@@ -2735,7 +2772,12 @@ $("#ocrst").onclick=()=>{$("#ocin").value="";setOutage(null)};
 let wire=WIRE,wireAt=WIREAT,wsub="all";
 const WFEEDS="BleepingComputer, The Record, The Hacker News, Krebs on Security, The Register, Dark Reading, SecurityWeek, NCSC UK, CERT-FR, Cisco Talos, Microsoft Security, SANS ISC, METR, BBC, CyberScoop · Norge: NRK, VG, digi.no, kode24, MET farevarsel, NSM, DSB, Statnett";
 function wTick(){const e=$("#wage");if(!e||!wireAt)return;const s=Math.max(0,Math.floor((Date.now()-new Date(wireAt))/1000));e.textContent=fmt(t("w_age"),{s:nf(s)})}
-setInterval(wTick,1000);
+let wTimer=0;
+// One-second timers (outage clock, news age) run only while their tab is shown and the screen is on, to save battery
+function runTimers(){clearInterval(ocTimer);clearInterval(wTimer);ocTimer=wTimer=0;if(document.hidden)return;
+  if(tab==="blackout"&&outage){tick();ocTimer=setInterval(tick,1000)}
+  if(tab==="wire"){wTick();wTimer=setInterval(wTick,1000)}}
+document.addEventListener("visibilitychange",runTimers);
 // Headlines: a scheduled task writes wirefeed/latest every hour; the embedded snapshot is the fallback
 let wdb=null;
 function wApply(s){if(s&&s.exists){const x=s.data();if(x&&Array.isArray(x.items)&&x.items.length){wire=x.items.filter(i=>i&&i.t&&i.u);wireAt=x.at||wireAt;renderWire()}}}

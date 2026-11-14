@@ -76,7 +76,7 @@ u_days:"days",
 u_pers:"people",
 bo_title:"When the power goes",
 bo_h1:"First hour",
-bo_1a:"Check whether the neighbours have lost power too. Listen to NRK P1 on a battery radio.",
+bo_1a:"Check whether the neighbours have lost power too. Listen to NRK P1 on a battery radio. Or use the car radio, but never with the engine running in a closed garage.",
 bo_1b:"Switch off the cooker, oven and iron so nothing starts by itself when the power returns.",
 bo_1c:"Keep the fridge and freezer closed. Food stays cold for many hours.",
 bo_h2:"First day",
@@ -186,5 +186,7 @@ in_title:"Install the app",
 in_text:"Add the list to your home screen. It then opens without network, like a normal app, and the browser is less likely to delete your data.",
 in_btn:"Install the app",
 in_ios:"iPhone/iPad: tap the Share button in Safari and choose “Add to Home Screen”.",
-in_iosData:"Important on iPhone: the app does not share data with Safari. Install first and fill in the list in the app, or export your data and import it in the app."
+in_iosData:"Important on iPhone: the app does not share data with Safari. Install first and fill in the list in the app, or export your data and import it in the app.",
+off_msg:"Offline. You are viewing the saved copy (version {d}).",
+dirs:"north|north-east|east|south-east|south|south-west|west|north-west"
 };

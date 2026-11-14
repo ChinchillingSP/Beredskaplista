@@ -76,7 +76,7 @@ u_days:"maalmood",
 u_pers:"qof",
 bo_title:"Marka korontadu go'do",
 bo_h1:"Saacadda koowaad",
-bo_1a:"Hubi in deriskuna koronto la'aan yihiin. Ka dhegayso NRK P1 raadiye baytari ah.",
+bo_1a:"Hubi in deriskuna koronto la'aan yihiin. Ka dhegayso NRK P1 raadiye baytari ah. Ama isticmaal raadiyaha baabuurka, laakiin weligaa ha shidin mishiinka gaaraash xiran.",
 bo_1b:"Dami foornada, tanuurka iyo kaawiyadda si aysan isu shidin marka korontadu soo laabato.",
 bo_1c:"Ha furin qaboojiyaha iyo barafeeyaha. Cuntadu saacado badan ayay qabow ahaanaysaa.",
 bo_h2:"Maalinta koowaad",
@@ -186,5 +186,7 @@ in_title:"Ku rakib app-ka",
 in_text:"Liiska ku dar shaashadda hore. Markaas wuxuu furmaa internet la'aan, sida app caadi ah, browser-kuna si fudud uma tirtiro xogtaada.",
 in_btn:"Ku rakib app-ka",
 in_ios:"iPhone/iPad: Safari ku riix badhanka La wadaag kadibna dooro «Ku dar Shaashadda Hore».",
-in_iosData:"Muhiim iPhone: app-ku xog lama wadaago Safari. Marka hore rakib oo liiska ku buuxi app-ka, ama xogtaada dhoofi oo app-ka ku soo dhoofso."
+in_iosData:"Muhiim iPhone: app-ku xog lama wadaago Safari. Marka hore rakib oo liiska ku buuxi app-ka, ama xogtaada dhoofi oo app-ka ku soo dhoofso.",
+off_msg:"Internet ma jiro. Waxaad arkaysaa nuqulka la kaydiyay (nooca {d}).",
+dirs:"waqooyi|waqooyi-bari|bari|koonfur-bari|koonfur|koonfur-galbeed|galbeed|waqooyi-galbeed"
 };

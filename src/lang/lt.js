@@ -76,7 +76,7 @@ u_days:"d.",
 u_pers:"asm.",
 bo_title:"Kai dingsta elektra",
 bo_h1:"Pirmoji valanda",
-bo_1a:"Patikrinkite, ar kaimynai taip pat be elektros. Klausykite NRK P1 per radiją su baterijomis.",
+bo_1a:"Patikrinkite, ar kaimynai taip pat be elektros. Klausykite NRK P1 per radiją su baterijomis. Arba naudokite automobilio radiją, bet niekada su veikiančiu varikliu uždarame garaže.",
 bo_1b:"Išjunkite viryklę, orkaitę ir lygintuvą, kad niekas neįsijungtų grįžus elektrai.",
 bo_1c:"Laikykite šaldytuvą ir šaldiklį uždarytus. Maistas išliks šaltas daug valandų.",
 bo_h2:"Pirmoji para",
@@ -186,5 +186,7 @@ in_title:"Įdiekite programėlę",
 in_text:"Pridėkite sąrašą prie pradžios ekrano. Tada jis atsidaro be ryšio, kaip įprasta programėlė, o naršyklė rečiau ištrina jūsų duomenis.",
 in_btn:"Įdiegti programėlę",
 in_ios:"iPhone/iPad: Safari paspauskite mygtuką „Bendrinti“ ir pasirinkite „Įtraukti į pradžios ekraną“.",
-in_iosData:"Svarbu iPhone: programėlė nesidalija duomenimis su Safari. Pirmiausia įdiekite ir pildykite sąrašą programėlėje arba eksportuokite duomenis ir importuokite juos programėlėje."
+in_iosData:"Svarbu iPhone: programėlė nesidalija duomenimis su Safari. Pirmiausia įdiekite ir pildykite sąrašą programėlėje arba eksportuokite duomenis ir importuokite juos programėlėje.",
+off_msg:"Nėra ryšio. Matote išsaugotą kopiją (versija {d}).",
+dirs:"šiaurė|šiaurės rytai|rytai|pietryčiai|pietūs|pietvakariai|vakarai|šiaurės vakarai"
 };

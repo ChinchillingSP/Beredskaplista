@@ -76,7 +76,7 @@ u_days:"días",
 u_pers:"pers.",
 bo_title:"Cuando se va la luz",
 bo_h1:"Primera hora",
-bo_1a:"Mira si los vecinos también están sin luz. Escucha NRK P1 en una radio de pilas.",
+bo_1a:"Mira si los vecinos también están sin luz. Escucha NRK P1 en una radio de pilas. O usa la radio del coche, pero nunca con el motor encendido en un garaje cerrado.",
 bo_1b:"Apaga la placa, el horno y la plancha para que nada se encienda solo al volver la luz.",
 bo_1c:"No abras la nevera ni el congelador. La comida se mantiene fría muchas horas.",
 bo_h2:"Primer día",
@@ -186,5 +186,7 @@ in_title:"Instala la app",
 in_text:"Añade la lista a la pantalla de inicio. Así abre sin conexión, como una app normal, y el navegador no borra tus datos tan fácilmente.",
 in_btn:"Instalar la app",
 in_ios:"iPhone/iPad: pulsa el botón Compartir de Safari y elige «Añadir a pantalla de inicio».",
-in_iosData:"Importante en iPhone: la app no comparte datos con Safari. Instálala primero y rellena la lista en la app, o exporta tus datos e impórtalos en la app."
+in_iosData:"Importante en iPhone: la app no comparte datos con Safari. Instálala primero y rellena la lista en la app, o exporta tus datos e impórtalos en la app.",
+off_msg:"Sin conexión. Estás viendo la copia guardada (versión del {d}).",
+dirs:"norte|noreste|este|sureste|sur|suroeste|oeste|noroeste"
 };

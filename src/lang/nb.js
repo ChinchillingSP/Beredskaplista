@@ -76,7 +76,7 @@ u_days:"dager",
 u_pers:"pers.",
 bo_title:"Når strømmen går",
 bo_h1:"Første time",
-bo_1a:"Sjekk om naboene også er uten strøm. Lytt til NRK P1 på batteriradio.",
+bo_1a:"Sjekk om naboene også er uten strøm. Lytt til NRK P1 på batteriradio. Eller bruk bilradioen, men aldri med motoren i gang i en lukket garasje.",
 bo_1b:"Skru av komfyr, ovn og strykejern, så ingenting starter av seg selv når strømmen kommer tilbake.",
 bo_1c:"Hold kjøleskap og fryser lukket. Maten holder seg kald i mange timer.",
 bo_h2:"Første døgn",
@@ -186,5 +186,7 @@ in_title:"Installer appen",
 in_text:"Legg lista på hjemskjermen. Da åpner den uten nett, som en vanlig app, og nettleseren sletter ikke dataene dine så lett.",
 in_btn:"Installer appen",
 in_ios:"iPhone/iPad: trykk Del-knappen i Safari og velg «Legg til på Hjem-skjerm».",
-in_iosData:"Viktig på iPhone: appen deler ikke data med Safari. Installer først og fyll ut lista i appen, eller eksporter dataene og importer dem i appen."
+in_iosData:"Viktig på iPhone: appen deler ikke data med Safari. Installer først og fyll ut lista i appen, eller eksporter dataene og importer dem i appen.",
+off_msg:"Uten nett. Du ser den lagrede kopien (versjon {d}).",
+dirs:"nord|nordøst|øst|sørøst|sør|sørvest|vest|nordvest"
 };
