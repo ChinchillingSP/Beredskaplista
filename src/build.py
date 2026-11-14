@@ -1,6 +1,6 @@
 """Builds ../index.html from template.html, the language files and the data folder.
 Run from this folder: python3 build.py"""
-import json, os
+import datetime, json, os
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 ORDER = ["nb", "en", "es", "pl", "lt", "uk", "ar", "so", "ti", "tl", "ja"]
 src = open("template.html", encoding="utf-8").read()
@@ -10,6 +10,7 @@ src = (src.replace("/*LANGS*/", langs)
           .replace("/*SHELTERS*/", open("../data/tilfluktsrom-oslo-baerum.json", encoding="utf-8").read())
           .replace("/*GEO*/", open("../data/postnummer-gater-oslo-baerum.json", encoding="utf-8").read())
           .replace("/*WIREAT*/", json.dumps(wire.get("at")))
+          .replace("/*BUILT*/", json.dumps(datetime.date.today().isoformat()))  # "last updated" footer
           .replace("/*WIRE*/", json.dumps(wire.get("items", []), ensure_ascii=False)))
 # The claude.ai artifact host adds the document skeleton; GitHub Pages needs it in the file.
 src = ('<!doctype html>\n<html lang="nb">\n<meta charset="utf-8">\n'
