@@ -137,6 +137,14 @@ async function check(name, fn) {
   await pp.fill("#shq", "1357");
   await pp.click("#shform button");
   await pp.waitForTimeout(200);
+  await check("print button is on the emergency numbers tab", async () => {
+    await pp.evaluate(() => { window.print = () => { window.__printed = 1; }; });
+    await pp.click('[data-tab="numbers"]');
+    await pp.click("#sheetbtn");
+    assert.strictEqual(await pp.evaluate(() => window.__printed), 1);
+    await pp.click('[data-tab="overview"]');
+    assert.ok(await pp.isHidden("#sheetbtn"));
+  });
   for (const lang of ["nb", "en", "es", "pl", "lt", "uk", "ar", "so", "ti", "tl", "ja"]) {
     await check(`print sheet fits on one A4 page (${lang})`, async () => {
       await pp.click(`[data-lang="${lang}"]`);
