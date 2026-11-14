@@ -53,3 +53,5 @@ Object.assign(L.en,{"src_gInsp": "Live wire tab inspired by"});
 Object.assign(L.en,{"co_warn": "Gas and paraffin heaters need a CO alarm and some ventilation. Never use a barbecue or outdoor stove* indoors.", "co_note": "* DSB: gas appliances made for outdoor use must never be used indoors. Many camping stoves are for outdoor use only, but some cartridge stoves are approved for indoor use. Check the label or manual. If it says indoor use: good ventilation, a large enough room and a CO alarm. If not: cook outside or on the balcony.", "co_src": "Source: DSB – How to avoid carbon monoxide poisoning"});
 //B4
 Object.assign(L.en,{"disc_3": "Licence: MIT. Anyone may use, copy, change and share it, also commercially, as long as the notice “Copyright (c) 2026 José Chinchilla” and the licence text are kept.", "w_age": "{s} seconds since the last update"});
+//B8
+Object.assign(L.en,{"th_dark": "Switch to dark mode", "th_light": "Switch to light mode"});

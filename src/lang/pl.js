@@ -53,3 +53,5 @@ Object.assign(L.pl,{"src_gInsp": "Karta wiadomości na żywo inspirowana przez"}
 Object.assign(L.pl,{"co_warn": "Grzejniki gazowe i naftowe wymagają czujnika CO i wietrzenia. Nigdy nie używaj grilla ani kuchenki zewnętrznej* w domu.", "co_note": "* DSB: urządzeń gazowych przeznaczonych do użytku na zewnątrz nigdy nie wolno używać w pomieszczeniach. Wiele kuchenek turystycznych jest tylko do użytku na zewnątrz, ale niektóre kuchenki na kartusze są dopuszczone do użytku wewnątrz. Sprawdź oznaczenie lub instrukcję. Jeśli jest do wnętrz: dobra wentylacja, odpowiednio duże pomieszczenie i czujnik CO. Jeśli nie: gotuj na zewnątrz lub na balkonie.", "co_src": "Źródło: DSB – Jak uniknąć zatrucia czadem"});
 //B4
 Object.assign(L.pl,{"disc_3": "Licencja: MIT. Każdy może używać, kopiować, zmieniać i udostępniać, także komercyjnie, pod warunkiem zachowania informacji „Copyright (c) 2026 José Chinchilla” i tekstu licencji.", "w_age": "{s} s od ostatniej aktualizacji"});
+//B8
+Object.assign(L.pl,{"th_dark": "Przełącz na tryb ciemny", "th_light": "Przełącz na tryb jasny"});

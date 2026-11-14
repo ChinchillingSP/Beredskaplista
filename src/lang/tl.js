@@ -53,3 +53,5 @@ Object.assign(L.tl,{"src_gInsp": "Ang tab ng live na balita ay hango sa"});
 Object.assign(L.tl,{"co_warn": "Ang gas at paraffin heater ay kailangan ng CO alarm at kaunting bentilasyon. Huwag kailanman gumamit ng ihawan o panlabas na kalan* sa loob.", "co_note": "* DSB: hindi kailanman dapat gamitin sa loob ang mga gas appliance na pang-labas. Maraming camping stove ang pang-labas lang, pero may ilang cartridge stove na aprubado para sa loob. Tingnan ang label o manwal. Kung pang-loob: maayos na bentilasyon, sapat na laki ng kuwarto at CO alarm. Kung hindi: magluto sa labas o sa balkonahe.", "co_src": "Pinagkunan: DSB – Paano iwasan ang CO poisoning"});
 //B4
 Object.assign(L.tl,{"disc_3": "Lisensya: MIT. Malayang gamitin, kopyahin, baguhin at ibahagi ninuman, pati sa negosyo, basta panatilihin ang paunawang “Copyright (c) 2026 José Chinchilla” at ang teksto ng lisensya.", "w_age": "{s} segundo mula sa huling update"});
+//B8
+Object.assign(L.tl,{"th_dark": "Lumipat sa dark mode", "th_light": "Lumipat sa light mode"});

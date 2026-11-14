@@ -53,3 +53,5 @@ Object.assign(L.lt,{"src_gInsp": "Tiesioginių naujienų skirtukas įkvėptas"})
 Object.assign(L.lt,{"co_warn": "Dujiniams ir žibaliniams šildytuvams reikia CO jutiklio ir vėdinimo. Niekada nenaudokite grilio ar lauko viryklės* viduje.", "co_note": "* DSB: lauko naudojimui skirtų dujinių prietaisų niekada negalima naudoti patalpose. Daug turistinių viryklių skirtos tik lauke, tačiau kai kurios viryklės su dujų kasete patvirtintos naudoti patalpose. Patikrinkite žymėjimą ar instrukciją. Jei skirta patalpoms: geras vėdinimas, pakankamai didelė patalpa ir CO jutiklis. Jei ne: gaminkite lauke ar balkone.", "co_src": "Šaltinis: DSB – Kaip išvengti apsinuodijimo smalkėmis"});
 //B4
 Object.assign(L.lt,{"disc_3": "Licencija: MIT. Bet kas gali naudoti, kopijuoti, keisti ir platinti, taip pat komerciškai, jei išsaugo pranešimą „Copyright (c) 2026 José Chinchilla“ ir licencijos tekstą.", "w_age": "{s} s nuo paskutinio atnaujinimo"});
+//B8
+Object.assign(L.lt,{"th_dark": "Perjungti į tamsų režimą", "th_light": "Perjungti į šviesų režimą"});

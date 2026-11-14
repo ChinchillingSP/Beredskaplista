@@ -53,3 +53,5 @@ Object.assign(L.es,{"src_gInsp": "Pestaña de noticias en directo inspirada por"
 Object.assign(L.es,{"co_warn": "Las estufas de gas y de parafina necesitan alarma de CO y algo de ventilación. Nunca uses barbacoa ni hornillo de exterior* dentro de casa.", "co_note": "* DSB: los aparatos de gas pensados para uso exterior no deben usarse nunca en interiores. Muchos hornillos de camping son solo para exterior, pero algunos hornillos de cartucho están homologados para interior. Mira la etiqueta o el manual. Si pone uso interior: buena ventilación, una habitación lo bastante grande y alarma de CO. Si no: cocina fuera o en el balcón.", "co_src": "Fuente: DSB – Cómo evitar la intoxicación por monóxido de carbono"});
 //B4
 Object.assign(L.es,{"disc_3": "Licencia: MIT. Cualquiera puede usarla, copiarla, cambiarla y compartirla, también con fines comerciales, siempre que mantenga el aviso «Copyright (c) 2026 José Chinchilla» y el texto de la licencia.", "w_age": "{s} segundos desde la última actualización"});
+//B8
+Object.assign(L.es,{"th_dark": "Cambiar a modo oscuro", "th_light": "Cambiar a modo claro"});

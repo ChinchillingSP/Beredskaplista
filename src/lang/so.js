@@ -53,3 +53,5 @@ Object.assign(L.so,{"src_gInsp": "Qaybta wararka tooska ah waxaa dhiirrigeliyey"
 Object.assign(L.so,{"co_warn": "Kululeeyayaasha gaaska iyo saliidda waxay u baahan yihiin digniinta CO iyo hawo. Weligaa gudaha ha ku isticmaalin dabka dubista ama foornada banaanka*.", "co_note": "* DSB: qalabka gaaska ee loogu talagalay banaanka weligood gudaha lagama isticmaalo. Foornooyin badan oo kaam ah waa banaanka oo keliya, laakiin qaar ka mid ah foornooyinka kartuushka ayaa loo oggolaaday gudaha. Eeg calaamadda ama buugga tilmaamaha. Haddii uu leeyahay gudaha: hawo wanaagsan, qol ku filan iyo digniinta CO. Haddii kale: banaanka ama balakoonka ku karso.", "co_src": "Isha: DSB – Sida looga fogaado sumowga CO"});
 //B4
 Object.assign(L.so,{"disc_3": "Liisan: MIT. Qof kastaa wuu isticmaali karaa, koobiyeyn karaa, beddeli karaa oo wadaagi karaa, xitaa ganacsi ahaan, haddii uu hayo ogeysiiska “Copyright (c) 2026 José Chinchilla” iyo qoraalka liisanka.", "w_age": "{s} ilbiriqsi tan iyo cusboonaysiintii u dambeysay"});
+//B8
+Object.assign(L.so,{"th_dark": "U beddel qaabka madow", "th_light": "U beddel qaabka iftiinka"});

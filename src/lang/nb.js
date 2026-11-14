@@ -53,3 +53,5 @@ Object.assign(L.nb,{"src_gInsp": "Fanen «Nyheter direkte» er inspirert av"});
 Object.assign(L.nb,{"co_warn": "Gassovner og parafinovner trenger CO-varsler og litt lufting. Bruk aldri grill eller utendørs kokeapparat* inne.", "co_note": "* DSB: gassapparater beregnet for utendørs bruk må aldri brukes innendørs. Mange stormkjøkken og gassbluss er bare for utendørs bruk, men noen kokeapparater med gassboks er godkjent for innendørs bruk. Sjekk merkingen eller bruksanvisningen. Står det innendørs bruk: god lufting, stort nok rom og CO-varsler. Hvis ikke: lag mat ute eller på balkongen.", "co_src": "Kilde: DSB – Slik unngår du kullosforgiftning"});
 //B4
 Object.assign(L.nb,{"disc_3": "Lisens: MIT. Alle kan bruke, kopiere, endre og dele den, også kommersielt, så lenge opphavsmerknaden «Copyright (c) 2026 José Chinchilla» og lisensteksten følger med.", "w_age": "{s} sekunder siden siste oppdatering"});
+//B8
+Object.assign(L.nb,{"th_dark": "Bytt til mørk modus", "th_light": "Bytt til lys modus"});
