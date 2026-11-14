@@ -13,6 +13,7 @@ Household emergency preparedness list for Norway, based on the advice from DSB (
 - Power outage clock.
 - Shelter finder for Oslo and Bærum by postcode, street or coordinates, using a local copy of DSB's public shelter register.
 - Emergency numbers, siren signals and a news tab with security, AI and Norwegian headlines.
+- Works offline: after the first visit with a connection, the page opens without network (service worker). Excel and PDF need a connection the first time each is used.
 
 ## Privacy
 
@@ -28,18 +29,23 @@ This page is made in good faith, but it is not official advice. If in doubt or i
 | --- | --- |
 | `index.html` | The built page that GitHub Pages serves. Do not edit it by hand. |
 | `wire.json` | Latest news headlines, read by the page every 5 minutes. |
+| `sw.js` | Service worker for offline use. Built from `src/sw.template.js`; do not edit by hand. |
+| `fonts/` | Self-hosted fonts, so text looks the same offline. |
+| `vendor/` | Excel and PDF libraries, loaded only when someone downloads. |
 | `src/template.html` | Page layout, styles and code. |
 | `src/lang/*.js` | One file per language. |
-| `src/build.py` | Builds `index.html` from `src/` and `data/`. |
+| `src/build.py` | Builds `index.html` and `sw.js` from `src/` and `data/`. |
 | `data/` | Shelter and postcode data (see below). |
 
-To rebuild after a change: `python3 src/build.py`, then commit `index.html` together with your source changes.
+To rebuild after a change: `python3 src/build.py`, then commit `index.html` and `sw.js` together with your source changes.
 
 ## Data sources and licences
 
 - Public shelters: DSB, via Geonorge, under the Norwegian Licence for Open Government Data (NLOD 2.0). Extract of 9 November 2026, converted to WGS84; mirror used: https://github.com/avimedia/tilfluktsrom-data
 - Postcodes with coordinates: Erik Bolstad, https://www.erikbolstad.no/postnummer-koordinatar/ (CC BY 3.0).
 - Advice texts are based on DSB's self-preparedness guidance (sikkerhverdag / dsb.no).
+- Fonts: Archivo, Noto Sans, Noto Sans Arabic and Noto Sans Ethiopic, via Fontsource, under the SIL Open Font License 1.1 (`fonts/LICENSE-*.txt`).
+- Libraries: SheetJS xlsx 0.18.5 (Apache 2.0), jsPDF 2.5.1 (MIT) and html2canvas 1.4.1 (MIT), with their licences in `vendor/`.
 - The news tab is inspired by the Global Threat Desk by atomsmasher-design (MIT).
 
 ## Licence

@@ -180,5 +180,6 @@ co_src:"Fuente: DSB – Cómo evitar la intoxicación por monóxido de carbono",
 w_age:"{s} segundos desde la última actualización",
 th_dark:"Cambiar a modo oscuro",
 th_light:"Cambiar a modo claro",
-upd:"Última actualización: {d}"
+upd:"Última actualización: {d}",
+exportOffline:"Sin conexión: Excel o PDF solo funciona si ya descargaste ese formato antes, con conexión. La lista y la exportación de datos (.json) sí funcionan."
 };

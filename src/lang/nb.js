@@ -180,5 +180,6 @@ co_src:"Kilde: DSB – Slik unngår du kullosforgiftning",
 w_age:"{s} sekunder siden siste oppdatering",
 th_dark:"Bytt til mørk modus",
 th_light:"Bytt til lys modus",
-upd:"Sist oppdatert: {d}"
+upd:"Sist oppdatert: {d}",
+exportOffline:"Uten nett: Excel eller PDF virker bare hvis du har lastet ned det formatet før, med nett. Lista og eksport av data (.json) virker."
 };

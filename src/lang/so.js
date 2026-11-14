@@ -180,5 +180,6 @@ co_src:"Isha: DSB – Sida looga fogaado sumowga CO",
 w_age:"{s} ilbiriqsi tan iyo cusboonaysiintii u dambeysay",
 th_dark:"U beddel qaabka madow",
 th_light:"U beddel qaabka iftiinka",
-upd:"Markii ugu dambeysay la cusbooneysiiyay: {d}"
+upd:"Markii ugu dambeysay la cusbooneysiiyay: {d}",
+exportOffline:"Internet la'aan: Excel ama PDF wuxuu shaqeeyaa oo keliya haddii aad qaabkaas hore u soo dejisay adigoo internet haysta. Liiska iyo dhoofinta xogta (.json) way shaqeeyaan."
 };

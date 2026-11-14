@@ -180,5 +180,6 @@ co_src:"Source: DSB – How to avoid carbon monoxide poisoning",
 w_age:"{s} seconds since the last update",
 th_dark:"Switch to dark mode",
 th_light:"Switch to light mode",
-upd:"Last updated: {d}"
+upd:"Last updated: {d}",
+exportOffline:"Offline: Excel or PDF only works if you downloaded that format before, while online. The list and data export (.json) still work."
 };

@@ -287,15 +287,18 @@ p.tiny{font-size:12px;margin:0}
 </div>
 <div id="printable" aria-hidden="true"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 const L={};
 const SHELTERS=/*SHELTERS*/;
 const GEO=/*GEO*/;
 /*LANGS*/
 const ORDER=["nb","en","es","pl","lt","uk","ar","so","ti","tl","ja"];
+// Build settings: where the export libraries come from, and whether to register the offline service worker
+const LIBBASE=/*LIBBASE*/;const USE_SW=/*USE_SW*/;
+// Export libraries (about 1.4 MB) load only when someone presses a download button
+const LIBS={xlsx:"xlsx/0.18.5/xlsx.full.min.js",jspdf:"jspdf/2.5.1/jspdf.umd.min.js",h2c:"html2canvas/1.4.1/html2canvas.min.js"};const libP={};
+function lib(k){return libP[k]||(libP[k]=new Promise((ok,no)=>{const sc=document.createElement("script");sc.src=LIBBASE+LIBS[k];sc.onload=ok;sc.onerror=()=>{delete libP[k];sc.remove();no(new Error("lib "+k))};document.head.appendChild(sc)}))}
+if(USE_SW&&"serviceWorker" in navigator)navigator.serviceWorker.register("./sw.js").catch(()=>{});
 const WIRE=/*WIRE*/;const WIREAT=/*WIREAT*/;const BUILT=/*BUILT*/;
 const CATS=["water","food","cook","heat","info","health","hyg","pay","evac","home"];
 const C=Math.ceil;
@@ -510,16 +513,18 @@ async function saveFile(name,data){
 function stamp(){return iso(new Date())}
 $("#dlx").onclick=async()=>{
   try{
+    await lib("xlsx");
     const aoa=[[t("title")],[hhLine()],[],["",t("item"),t("stock"),t("target"),t("unit"),"✓",t("note"),t("date")]];
     exportRows().forEach(r=>aoa.push([r.cat,r.name,r.stock,r.target,r.unit,r.done,r.note,r.date]));
     const ws=XLSX.utils.aoa_to_sheet(aoa);ws["!cols"]=[{wch:26},{wch:40},{wch:8},{wch:8},{wch:8},{wch:4},{wch:30},{wch:12}];
     const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,"Liste");
     const buf=XLSX.write(wb,{bookType:"xlsx",type:"array"});
     await saveFile(`beredskap-${stamp()}.xlsx`,new Blob([buf]));
-  }catch(e){console.error("EXPORT",e&&e.message||e);$("#dlmsg").textContent=t("exportErr")}
+  }catch(e){console.error("EXPORT",e&&e.message||e);$("#dlmsg").textContent=t(navigator.onLine===false?"exportOffline":"exportErr")}
 };
 $("#dlp").onclick=async()=>{
   try{
+    await Promise.all([lib("jspdf"),lib("h2c")]);
     const pr=$("#printable");pr.dir=document.documentElement.dir;
     let rows="",last="";exportRows().forEach(r=>{if(r.cat!==last){rows+=`<tr class="cat"><td colspan="6">${esc(r.cat)}</td></tr>`;last=r.cat}
       rows+=`<tr><td>${esc(r.done)}</td><td>${esc(r.name)}</td><td>${esc(r.stock)} / ${esc(r.target)} ${esc(r.unit)}</td><td>${esc(r.note)}</td><td>${esc(r.date)}</td></tr>`});
@@ -542,7 +547,7 @@ $("#dlp").onclick=async()=>{
     });
     pr.innerHTML="";
     await saveFile(`beredskap-${stamp()}.pdf`,pdf.output("blob"));
-  }catch(e){console.error("EXPORT",e&&e.message||e);$("#dlmsg").textContent=t("exportErr")}
+  }catch(e){console.error("EXPORT",e&&e.message||e);$("#dlmsg").textContent=t(navigator.onLine===false?"exportOffline":"exportErr")}
 };
 function updExport(){const h=hasData();$("#exportNeed").hidden=h;$("#dlx").disabled=!h;$("#dlp").disabled=!h}
 

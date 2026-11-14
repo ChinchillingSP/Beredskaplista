@@ -180,5 +180,6 @@ co_src:"Źródło: DSB – Jak uniknąć zatrucia czadem",
 w_age:"{s} s od ostatniej aktualizacji",
 th_dark:"Przełącz na tryb ciemny",
 th_light:"Przełącz na tryb jasny",
-upd:"Ostatnia aktualizacja: {d}"
+upd:"Ostatnia aktualizacja: {d}",
+exportOffline:"Bez sieci: Excel lub PDF działa tylko, jeśli wcześniej pobrano ten format z siecią. Lista i eksport danych (.json) działają."
 };

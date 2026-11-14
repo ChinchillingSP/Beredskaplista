@@ -180,5 +180,6 @@ co_src:"Pinagkunan: DSB – Paano iwasan ang CO poisoning",
 w_age:"{s} segundo mula sa huling update",
 th_dark:"Lumipat sa dark mode",
 th_light:"Lumipat sa light mode",
-upd:"Huling na-update: {d}"
+upd:"Huling na-update: {d}",
+exportOffline:"Offline: gagana lang ang Excel o PDF kung na-download mo na ang format na iyon dati habang may internet. Gumagana pa rin ang listahan at ang export ng data (.json)."
 };

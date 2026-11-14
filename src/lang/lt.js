@@ -180,5 +180,6 @@ co_src:"Šaltinis: DSB – Kaip išvengti apsinuodijimo smalkėmis",
 w_age:"{s} s nuo paskutinio atnaujinimo",
 th_dark:"Perjungti į tamsų režimą",
 th_light:"Perjungti į šviesų režimą",
-upd:"Paskutinį kartą atnaujinta: {d}"
+upd:"Paskutinį kartą atnaujinta: {d}",
+exportOffline:"Be ryšio: Excel ar PDF veikia tik jei šį formatą anksčiau atsisiuntėte su ryšiu. Sąrašas ir duomenų eksportas (.json) veikia."
 };
