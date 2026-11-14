@@ -1,0 +1,7 @@
+{
+  "name": "beredskaplista-tests",
+  "private": true,
+  "description": "End-to-end checks for the built page: offline use, install, power-outage mode, shelter search, print sheet.",
+  "scripts": { "test": "node run.js" },
+  "devDependencies": { "playwright": "^1.48.0" }
+}

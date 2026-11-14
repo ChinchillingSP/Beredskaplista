@@ -11,18 +11,19 @@ langs = "\n".join(open(f"lang/{c}.js", encoding="utf-8").read() for c in ORDER)
 wire = json.load(open("../wire.json", encoding="utf-8"))  # fallback headlines baked into the page
 src = (src.replace("/*LANGS*/", langs)
           .replace("/*SHELTERS*/", open("../data/tilfluktsrom-oslo-baerum.json", encoding="utf-8").read())
-          .replace("/*GEO*/", open("../data/postnummer-gater-oslo-baerum.json", encoding="utf-8").read())
+          .replace("/*GEO*/", json.dumps(open("../data/postnummer-gater-oslo-baerum.json", encoding="utf-8").read(), ensure_ascii=False))  # parsed lazily
           .replace("/*WIREAT*/", json.dumps(wire.get("at")))
           .replace("/*BUILT*/", json.dumps(datetime.date.today().isoformat()))  # "last updated" footer
           .replace("/*LIBBASE*/", json.dumps("vendor/"))   # export libraries hosted in this repo
           .replace("/*USE_SW*/", "true")                   # offline support (not possible inside claude.ai)
-          .replace(GOOGLE_FONTS, '<link rel="stylesheet" href="fonts/fonts.css">')
+          .replace(GOOGLE_FONTS, "<style>" + open("../fonts/fonts.css", encoding="utf-8").read().replace("url(", "url(fonts/") + "</style>")  # inline: no extra blocking request
           .replace("/*WIRE*/", json.dumps(wire.get("items", []), ensure_ascii=False)))
 # The claude.ai artifact host adds the document skeleton; GitHub Pages needs it in the file.
 src = ('<!doctype html>\n<html lang="nb">\n<meta charset="utf-8">\n'
        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
        '<meta name="color-scheme" content="light dark">\n'
        '<meta name="theme-color" content="#00205b">\n'
+       '<meta name="description" content="Household emergency preparedness list for Norway, based on DSB advice. 11 languages, works offline, no tracking.">\n'
        '<link rel="manifest" href="manifest.webmanifest">\n'
        '<link rel="icon" href="icons/icon.svg" type="image/svg+xml">\n'
        '<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">\n'

@@ -2,7 +2,7 @@
 // - The page, fonts and last headlines are stored on the first visit, so the page opens without network.
 // - Headlines (wire.json): network first, last stored copy when offline.
 // - Export libraries (vendor/): stored the first time someone downloads Excel or PDF.
-const CACHE = "beredskap-0230453a5992";
+const CACHE = "beredskap-d3703c5d6a2a";
 const PRECACHE = [
  "./",
  "index.html",

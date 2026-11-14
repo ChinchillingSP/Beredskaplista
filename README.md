@@ -40,6 +40,8 @@ This page is made in good faith, but it is not official advice. If in doubt or i
 | `src/build.py` | Builds `index.html` and `sw.js` from `src/` and `data/`. |
 | `data/` | Shelter and postcode data (see below). |
 
+Tests: see `TESTING.md` (automated checks in `tests/` and a 5-minute check on a real phone).
+
 To rebuild after a change: `python3 src/build.py`, then commit `index.html` and `sw.js` together with your source changes.
 
 ## Data sources and licences

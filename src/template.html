@@ -327,7 +327,9 @@ p.tiny{font-size:12px;margin:0}
 <script>
 const L={};
 const SHELTERS=/*SHELTERS*/;
-const GEO=/*GEO*/;
+// Postcode/street data (~150 KB) is kept as a string and parsed only when someone searches, so the page starts faster
+const GEO_SRC=/*GEO*/;let GEO_=null;const geoData=()=>GEO_||(GEO_=JSON.parse(GEO_SRC));
+const GEO={get pc(){return geoData().pc},get st(){return geoData().st}};
 /*LANGS*/
 const ORDER=["nb","en","es","pl","lt","uk","ar","so","ti","tl","ja"];
 // Build settings: where the export libraries come from, and whether to register the offline service worker
