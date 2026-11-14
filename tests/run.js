@@ -137,6 +137,10 @@ async function check(name, fn) {
   await pp.fill("#shq", "1357");
   await pp.click("#shform button");
   await pp.waitForTimeout(200);
+  await check("every emergency number is a tap-to-call link", async () => {
+    const hrefs = await pp.$$eval("#v-numbers a.num, #v-blackout .sos a", as => as.map(a => a.getAttribute("href")));
+    assert.deepStrictEqual(hrefs, ["tel:110", "tel:112", "tel:113", "tel:110", "tel:112", "tel:113", "tel:116117", "tel:22591300", "tel:02800"]);
+  });
   await check("print button is on the emergency numbers tab", async () => {
     await pp.evaluate(() => { window.print = () => { window.__printed = 1; }; });
     await pp.click('[data-tab="numbers"]');

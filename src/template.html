@@ -81,7 +81,8 @@ input[type=checkbox]{width:22px;height:22px;accent-color:var(--ok);cursor:pointe
 .info ul{margin:0;padding-inline-start:20px;display:grid;gap:6px}
 .warn{background:var(--accent-soft);border-radius:8px;padding:10px 12px;font-weight:700}
 .nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
-.num{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--surface)}
+.num{display:block;text-decoration:none;color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--surface)}
+.num:hover,.num:focus-visible{border-color:var(--accent)}
 .num b{display:block;font-family:var(--display);font-size:28px;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;user-select:all}
 .addr{font-weight:700}
 a{color:var(--navy)}
@@ -277,12 +278,12 @@ p.tiny{font-size:12px;margin:0}
   <section id="v-numbers" class="view" hidden style="display:grid;gap:14px">
     <div class="panel"><h2 data-t="n_title"></h2>
       <div class="nums">
-        <div class="num"><b>110</b><span data-t="n110"></span></div>
-        <div class="num"><b>112</b><span data-t="n112"></span></div>
-        <div class="num"><b>113</b><span data-t="n113"></span></div>
-        <div class="num"><b>116 117</b><span data-t="n116"></span></div>
-        <div class="num"><b>22 59 13 00</b><span data-t="n_gift"></span></div>
-        <div class="num"><b>02800</b><span data-t="n_pol"></span></div>
+        <a class="num" href="tel:110"><b>110</b><span data-t="n110"></span></a>
+        <a class="num" href="tel:112"><b>112</b><span data-t="n112"></span></a>
+        <a class="num" href="tel:113"><b>113</b><span data-t="n113"></span></a>
+        <a class="num" href="tel:116117"><b>116 117</b><span data-t="n116"></span></a>
+        <a class="num" href="tel:22591300"><b>22 59 13 00</b><span data-t="n_gift"></span></a>
+        <a class="num" href="tel:02800"><b>02800</b><span data-t="n_pol"></span></a>
       </div>
       <p class="muted" data-t="n_note"></p>
     </div>
