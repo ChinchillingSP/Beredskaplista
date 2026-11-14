@@ -2,7 +2,7 @@
 
 Household emergency preparedness list for Norway, based on the advice from DSB (the Norwegian Directorate for Civil Protection). The aim is to manage on your own for a week without power, water or shops.
 
-**Live page:** https://chinchillingsp.github.io/beredskaplista/
+**Live page:** https://chinchillingsp.github.io/Beredskaplista/
 
 ## Features
 
