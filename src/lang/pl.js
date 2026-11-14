@@ -188,5 +188,16 @@ in_btn:"Zainstaluj aplikację",
 in_ios:"iPhone/iPad: w Safari stuknij przycisk Udostępnij i wybierz „Do ekranu początkowego”.",
 in_iosData:"Ważne na iPhonie: aplikacja nie dzieli danych z Safari. Najpierw zainstaluj i wypełnij listę w aplikacji albo wyeksportuj dane i zaimportuj je w aplikacji.",
 off_msg:"Brak sieci. Oglądasz zapisaną kopię (wersja z {d}).",
-dirs:"północ|północny wschód|wschód|południowy wschód|południe|południowy zachód|zachód|północny zachód"
+dirs:"północ|północny wschód|wschód|południowy wschód|południe|południowy zachód|zachód|północny zachód",
+sheet_title:"Karta awaryjna",
+sheet_hint:"Jedna kartka z numerami alarmowymi, najbliższym schronem i tym, co robić w pierwszych dniach. Wydrukuj ją i przyklej na lodówce.",
+sheet_btn:"Drukuj kartę awaryjną",
+sheet_noprint:"Jeśli okno drukowania się tu nie otwiera, wydrukuj ze strony:",
+sheet_shelter:"Najbliższy schron",
+sheet_hand:"Uzupełnij ręcznie",
+sheet_fam:"Rodzina, telefon",
+sheet_valve:"Główny zawór wody",
+sheet_fuse:"Skrzynka bezpieczników",
+sheet_meet:"Miejsce spotkania",
+sheet_src:"Źródło: DSB, sikkerhverdag.no. W razie wątpliwości obowiązują zalecenia DSB."
 };

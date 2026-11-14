@@ -111,6 +111,24 @@ a{color:var(--navy)}
 .shl li{border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 12px;align-items:center}
 .shl .km{font-family:var(--display);font-size:22px;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;white-space:nowrap}
 .shl .ad{font-weight:700}.shl small{color:var(--muted);display:block}
+.sheet{display:none}
+@media print{
+  @page{size:A4;margin:11mm}
+  body{background:#fff!important;color:#000!important;font-size:10.5pt;line-height:1.35}
+  body::before,.wrap,#printable{display:none!important}
+  .sheet{display:block;color:#000;font-family:var(--body)}
+  .sheet *{color:#000}
+  .sheet h1{font-family:var(--display);font-size:20pt;margin:0 0 2mm;color:#000}
+  .sheet .meta{margin:0 0 4mm;font-size:9pt}
+  .sheet .cols{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
+  .sheet h2{font-family:var(--display);font-size:12pt;margin:3mm 0 1.5mm;padding-bottom:1mm;border-bottom:1.5pt solid #000}
+  .sheet ul{margin:0;padding-inline-start:4.5mm}.sheet li{margin:0 0 1mm}
+  .sheet .nums{display:grid;grid-template-columns:auto 1fr;gap:.5mm 3mm;align-items:baseline}
+  .sheet .nums b{font-family:var(--display);font-size:15pt}
+  .sheet .co{border:1.5pt solid #000;padding:2mm 3mm;font-weight:700;margin-top:3mm}
+  .sheet .line{border-bottom:.8pt solid #000;height:7.5mm;display:flex;align-items:flex-end;font-size:9pt}
+  .sheet .src{margin-top:4mm;font-size:8pt}
+}
 #printable{position:fixed;left:-10000px;top:0;width:794px;background:#fff;color:#111;padding:28px;font-family:var(--body);font-size:11px}
 #printable h1{color:#00205b;font-size:20px}#printable table{border-collapse:collapse;width:100%;margin-top:10px}
 #printable th,#printable td{border:1px solid #ccc;padding:4px 6px;text-align:start;vertical-align:top}#printable th{background:#eef1f5}
@@ -189,6 +207,7 @@ p.tiny{font-size:12px;margin:0}
       <div class="panel">
         <div class="prog"><span class="big" id="pct">0 %</span><div class="meter"><i id="bar"></i></div><span class="muted" id="count"></span></div>
       </div>
+      <div class="panel"><h2 data-t="sheet_title"></h2><p class="muted" style="margin:0" data-t="sheet_hint"></p><button type="button" class="primary" id="sheetbtn" style="justify-self:start" data-t="sheet_btn"></button><p class="muted tiny" id="sheetnp" hidden><span data-t="sheet_noprint"></span> <a href="https://chinchillingsp.github.io/Beredskaplista/" target="_blank" rel="noopener">chinchillingsp.github.io/Beredskaplista</a></p></div>
       <div class="panel"><h2 data-t="stepsTitle"></h2><ol class="steps" id="steps"></ol><p class="warn" data-t="co_warn"></p><p class="muted tiny"><span data-t="co_note"></span> <a href="https://www.dsb.no/sikkerhverdag/gass-og-brannfarlig-vaske/slik-unngar-du-kullosforgiftning/" target="_blank" rel="noopener" data-t="co_src"></a></p><p class="muted" data-t="estimate"></p></div>
     </div>
   </section>
@@ -303,6 +322,7 @@ p.tiny{font-size:12px;margin:0}
   <aside class="disc"><h2 data-t="disc_title"></h2><p data-t="disc_1"></p><p data-t="disc_2"></p><p><span data-t="disc_3"></span> <a href="https://opensource.org/license/mit" target="_blank" rel="noopener license">opensource.org/license/mit</a></p><p><b data-t="disc_4"></b> <a href="https://www.sikkerhverdag.no" target="_blank" rel="noopener">sikkerhverdag.no</a></p><p class="tiny" id="upd"></p></aside>
 </div>
 <div id="printable" aria-hidden="true"></div>
+<section id="sheet" class="sheet" aria-hidden="true"></section>
 
 <script>
 const L={};
@@ -501,6 +521,27 @@ let shLast=null; try{shLast=JSON.parse(localStorage.getItem("shLast")||"null")}c
 // Compass direction from the searched point to a shelter, for use without a map
 function dir8(a1,o1,a2,o2){const r=Math.PI/180,y=Math.sin((o2-o1)*r)*Math.cos(a2*r),x=Math.cos(a1*r)*Math.sin(a2*r)-Math.sin(a1*r)*Math.cos(a2*r)*Math.cos((o2-o1)*r);
   const b=(Math.atan2(y,x)/r+360)%360;return t("dirs").split("|")[Math.round(b/45)%8]}
+// ---- One-page emergency sheet (printed with the browser's own print, so it stays sharp) ----
+function renderSheet(){
+  const L1=k=>`<li>${esc(t(k))}</li>`;
+  let shel=`<div class="line"></div><div class="line"></div>`;
+  if(shLast){const s=SHELTERS.map(x=>({...x,km:hav(shLast.lat,shLast.lon,x.lat,x.lon)})).sort((a,b)=>a.km-b.km)[0];
+    if(s)shel=`<p style="margin:0"><b>${esc(s.adresse)}</b>, ${esc(s.sted)} · ${nf(s.plasser)} ${esc(t("sh_places"))}<br>${nf(Math.round(s.km*10)/10)} km ${esc(dir8(shLast.lat,shLast.lon,s.lat,s.lon))} · ${s.lat.toFixed(5)}, ${s.lon.toFixed(5)}<br><small>${esc(fmt(t("sh_res"),{q:shLast.label}))}</small></p>`}
+  const nums=[["110","n110"],["112","n112"],["113","n113"],["116 117","n116"],["22 59 13 00","n_gift"]].map(([n,k])=>`<b>${n}</b><span>${esc(t(k))}</span>`).join("");
+  const hand=["sheet_fam","sheet_fam","sheet_fam","sheet_valve","sheet_fuse","sheet_meet"].map(k=>`<div class="line">${esc(t(k))}:</div>`).join("");
+  const el=$("#sheet");el.dir=document.documentElement.dir;el.lang=document.documentElement.lang;
+  el.innerHTML=`<h1>${esc(t("sheet_title"))}</h1><p class="meta">${esc(t("title"))} · ${stamp()}</p><div class="cols"><div>
+    <h2>${esc(t("n_title"))}</h2><div class="nums">${nums}</div>
+    <h2>${esc(t("sheet_shelter"))}</h2>${shel}
+    <h2>${esc(t("si_title"))}</h2><ul>${["si_1","si_2","si_3","si_4"].map(L1).join("")}</ul>
+    <p class="co">${esc(t("co_warn"))}</p><p class="src" style="margin-top:1.5mm">${esc(t("co_note"))}</p></div><div>
+    <h2>${esc(t("bo_h1"))}</h2><ul>${["bo_1a","bo_1b","bo_1c"].map(L1).join("")}</ul>
+    <h2>${esc(t("bo_h2"))}</h2><ul>${["bo_2a","bo_2b","bo_2c"].map(L1).join("")}</ul>
+    <h2>${esc(t("bo_h3"))}</h2><ul>${["bo_3a","bo_3b","bo_3c"].map(L1).join("")}</ul>
+    <h2>${esc(t("sheet_hand"))}</h2>${hand}</div></div>
+    <p class="src">${esc(t("sheet_src"))}</p>`}
+window.addEventListener("beforeprint",renderSheet);
+$("#sheetbtn").onclick=()=>{renderSheet();if(window.claude)$("#sheetnp").hidden=false;try{window.print()}catch(e){$("#sheetnp").hidden=false}};
 function shShow(lat,lon,label){
   shLast={lat,lon,label};try{localStorage.setItem("shLast",JSON.stringify(shLast))}catch(e){}
   const r=SHELTERS.map(s=>({...s,km:hav(lat,lon,s.lat,s.lon)})).sort((a,b)=>a.km-b.km).slice(0,3);

@@ -188,5 +188,16 @@ in_btn:"I-install ang app",
 in_ios:"iPhone/iPad: pindutin ang Share button sa Safari at piliin ang “Add to Home Screen”.",
 in_iosData:"Mahalaga sa iPhone: hindi nagbabahagi ng data ang app sa Safari. Mag-install muna at punan ang listahan sa app, o i-export ang data at i-import ito sa app.",
 off_msg:"Walang koneksyon. Ang nakikita mo ay ang naka-save na kopya (bersyon {d}).",
-dirs:"hilaga|hilagang-silangan|silangan|timog-silangan|timog|timog-kanluran|kanluran|hilagang-kanluran"
+dirs:"hilaga|hilagang-silangan|silangan|timog-silangan|timog|timog-kanluran|kanluran|hilagang-kanluran",
+sheet_title:"Emergency sheet",
+sheet_hint:"Isang pahina na may mga emergency number, pinakamalapit na silungan at ang gagawin sa mga unang araw. I-print at idikit sa ref.",
+sheet_btn:"I-print ang emergency sheet",
+sheet_noprint:"Kung hindi bumukas dito ang print window, i-print mula sa website:",
+sheet_shelter:"Pinakamalapit na silungan",
+sheet_hand:"Punan sa kamay",
+sheet_fam:"Pamilya, telepono",
+sheet_valve:"Pangunahing balbula ng tubig",
+sheet_fuse:"Fuse box",
+sheet_meet:"Tagpuan",
+sheet_src:"Pinagkunan: DSB, sikkerhverdag.no. Kung may duda, sundin ang payo ng DSB."
 };

@@ -188,5 +188,16 @@ in_btn:"Ku rakib app-ka",
 in_ios:"iPhone/iPad: Safari ku riix badhanka La wadaag kadibna dooro «Ku dar Shaashadda Hore».",
 in_iosData:"Muhiim iPhone: app-ku xog lama wadaago Safari. Marka hore rakib oo liiska ku buuxi app-ka, ama xogtaada dhoofi oo app-ka ku soo dhoofso.",
 off_msg:"Internet ma jiro. Waxaad arkaysaa nuqulka la kaydiyay (nooca {d}).",
-dirs:"waqooyi|waqooyi-bari|bari|koonfur-bari|koonfur|koonfur-galbeed|galbeed|waqooyi-galbeed"
+dirs:"waqooyi|waqooyi-bari|bari|koonfur-bari|koonfur|koonfur-galbeed|galbeed|waqooyi-galbeed",
+sheet_title:"Warqadda xaaladda degdegga",
+sheet_hint:"Hal warqad oo leh lambarrada degdegga, hoyga ugu dhow iyo waxa la sameeyo maalmaha ugu horreeya. Daabac oo ku dheji qaboojiyaha.",
+sheet_btn:"Daabac warqadda degdegga",
+sheet_noprint:"Haddii daaqadda daabacaadda halkan aanay ka furmin, ka daabac bogga:",
+sheet_shelter:"Hoyga ugu dhow",
+sheet_hand:"Gacanta ku buuxi",
+sheet_fam:"Qoyska, telefoon",
+sheet_valve:"Furaha biyaha ee guud",
+sheet_fuse:"Sanduuqa korontada",
+sheet_meet:"Goobta la isugu imanayo",
+sheet_src:"Isha: DSB, sikkerhverdag.no. Haddii shaki jiro, raac talooyinka DSB."
 };

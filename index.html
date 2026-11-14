@@ -123,6 +123,24 @@ a{color:var(--navy)}
 .shl li{border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 12px;align-items:center}
 .shl .km{font-family:var(--display);font-size:22px;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;white-space:nowrap}
 .shl .ad{font-weight:700}.shl small{color:var(--muted);display:block}
+.sheet{display:none}
+@media print{
+  @page{size:A4;margin:11mm}
+  body{background:#fff!important;color:#000!important;font-size:10.5pt;line-height:1.35}
+  body::before,.wrap,#printable{display:none!important}
+  .sheet{display:block;color:#000;font-family:var(--body)}
+  .sheet *{color:#000}
+  .sheet h1{font-family:var(--display);font-size:20pt;margin:0 0 2mm;color:#000}
+  .sheet .meta{margin:0 0 4mm;font-size:9pt}
+  .sheet .cols{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
+  .sheet h2{font-family:var(--display);font-size:12pt;margin:3mm 0 1.5mm;padding-bottom:1mm;border-bottom:1.5pt solid #000}
+  .sheet ul{margin:0;padding-inline-start:4.5mm}.sheet li{margin:0 0 1mm}
+  .sheet .nums{display:grid;grid-template-columns:auto 1fr;gap:.5mm 3mm;align-items:baseline}
+  .sheet .nums b{font-family:var(--display);font-size:15pt}
+  .sheet .co{border:1.5pt solid #000;padding:2mm 3mm;font-weight:700;margin-top:3mm}
+  .sheet .line{border-bottom:.8pt solid #000;height:7.5mm;display:flex;align-items:flex-end;font-size:9pt}
+  .sheet .src{margin-top:4mm;font-size:8pt}
+}
 #printable{position:fixed;left:-10000px;top:0;width:794px;background:#fff;color:#111;padding:28px;font-family:var(--body);font-size:11px}
 #printable h1{color:#00205b;font-size:20px}#printable table{border-collapse:collapse;width:100%;margin-top:10px}
 #printable th,#printable td{border:1px solid #ccc;padding:4px 6px;text-align:start;vertical-align:top}#printable th{background:#eef1f5}
@@ -201,6 +219,7 @@ p.tiny{font-size:12px;margin:0}
       <div class="panel">
         <div class="prog"><span class="big" id="pct">0 %</span><div class="meter"><i id="bar"></i></div><span class="muted" id="count"></span></div>
       </div>
+      <div class="panel"><h2 data-t="sheet_title"></h2><p class="muted" style="margin:0" data-t="sheet_hint"></p><button type="button" class="primary" id="sheetbtn" style="justify-self:start" data-t="sheet_btn"></button><p class="muted tiny" id="sheetnp" hidden><span data-t="sheet_noprint"></span> <a href="https://chinchillingsp.github.io/Beredskaplista/" target="_blank" rel="noopener">chinchillingsp.github.io/Beredskaplista</a></p></div>
       <div class="panel"><h2 data-t="stepsTitle"></h2><ol class="steps" id="steps"></ol><p class="warn" data-t="co_warn"></p><p class="muted tiny"><span data-t="co_note"></span> <a href="https://www.dsb.no/sikkerhverdag/gass-og-brannfarlig-vaske/slik-unngar-du-kullosforgiftning/" target="_blank" rel="noopener" data-t="co_src"></a></p><p class="muted" data-t="estimate"></p></div>
     </div>
   </section>
@@ -315,6 +334,7 @@ p.tiny{font-size:12px;margin:0}
   <aside class="disc"><h2 data-t="disc_title"></h2><p data-t="disc_1"></p><p data-t="disc_2"></p><p><span data-t="disc_3"></span> <a href="https://opensource.org/license/mit" target="_blank" rel="noopener license">opensource.org/license/mit</a></p><p><b data-t="disc_4"></b> <a href="https://www.sikkerhverdag.no" target="_blank" rel="noopener">sikkerhverdag.no</a></p><p class="tiny" id="upd"></p></aside>
 </div>
 <div id="printable" aria-hidden="true"></div>
+<section id="sheet" class="sheet" aria-hidden="true"></section>
 
 <script>
 const L={};
@@ -510,7 +530,18 @@ in_btn:"Installer appen",
 in_ios:"iPhone/iPad: trykk Del-knappen i Safari og velg «Legg til på Hjem-skjerm».",
 in_iosData:"Viktig på iPhone: appen deler ikke data med Safari. Installer først og fyll ut lista i appen, eller eksporter dataene og importer dem i appen.",
 off_msg:"Uten nett. Du ser den lagrede kopien (versjon {d}).",
-dirs:"nord|nordøst|øst|sørøst|sør|sørvest|vest|nordvest"
+dirs:"nord|nordøst|øst|sørøst|sør|sørvest|vest|nordvest",
+sheet_title:"Beredskapsark",
+sheet_hint:"Ett ark med nødnumre, nærmeste tilfluktsrom og hva dere gjør de første dagene. Skriv det ut og heng det på kjøleskapet.",
+sheet_btn:"Skriv ut beredskapsarket",
+sheet_noprint:"Hvis utskriftsvinduet ikke åpnes her, skriv ut fra nettsiden:",
+sheet_shelter:"Nærmeste tilfluktsrom",
+sheet_hand:"Fyll ut for hånd",
+sheet_fam:"Familie, telefon",
+sheet_valve:"Stoppekran for vann",
+sheet_fuse:"Sikringsskap",
+sheet_meet:"Møteplass",
+sheet_src:"Kilde: DSB, sikkerhverdag.no. Ved tvil gjelder DSBs råd."
 };
 
 L.en={
@@ -703,7 +734,18 @@ in_btn:"Install the app",
 in_ios:"iPhone/iPad: tap the Share button in Safari and choose “Add to Home Screen”.",
 in_iosData:"Important on iPhone: the app does not share data with Safari. Install first and fill in the list in the app, or export your data and import it in the app.",
 off_msg:"Offline. You are viewing the saved copy (version {d}).",
-dirs:"north|north-east|east|south-east|south|south-west|west|north-west"
+dirs:"north|north-east|east|south-east|south|south-west|west|north-west",
+sheet_title:"Emergency sheet",
+sheet_hint:"One page with emergency numbers, the nearest shelter and what to do in the first days. Print it and put it on the fridge.",
+sheet_btn:"Print the emergency sheet",
+sheet_noprint:"If the print window does not open here, print from the website:",
+sheet_shelter:"Nearest shelter",
+sheet_hand:"Fill in by hand",
+sheet_fam:"Family, phone",
+sheet_valve:"Water shut-off valve",
+sheet_fuse:"Fuse box",
+sheet_meet:"Meeting point",
+sheet_src:"Source: DSB, sikkerhverdag.no. If in doubt, DSB's advice applies."
 };
 
 L.es={
@@ -896,7 +938,18 @@ in_btn:"Instalar la app",
 in_ios:"iPhone/iPad: pulsa el botón Compartir de Safari y elige «Añadir a pantalla de inicio».",
 in_iosData:"Importante en iPhone: la app no comparte datos con Safari. Instálala primero y rellena la lista en la app, o exporta tus datos e impórtalos en la app.",
 off_msg:"Sin conexión. Estás viendo la copia guardada (versión del {d}).",
-dirs:"norte|noreste|este|sureste|sur|suroeste|oeste|noroeste"
+dirs:"norte|noreste|este|sureste|sur|suroeste|oeste|noroeste",
+sheet_title:"Hoja de emergencia",
+sheet_hint:"Una hoja con los teléfonos de emergencia, el refugio más cercano y qué hacer los primeros días. Imprímela y pégala en la nevera.",
+sheet_btn:"Imprimir la hoja de emergencia",
+sheet_noprint:"Si aquí no se abre la ventana de imprimir, imprímela desde la web:",
+sheet_shelter:"Refugio más cercano",
+sheet_hand:"Rellenar a mano",
+sheet_fam:"Familia, teléfono",
+sheet_valve:"Llave de paso del agua",
+sheet_fuse:"Cuadro eléctrico",
+sheet_meet:"Punto de encuentro",
+sheet_src:"Fuente: DSB, sikkerhverdag.no. Ante la duda, mandan los consejos de la DSB."
 };
 
 L.pl={
@@ -1089,7 +1142,18 @@ in_btn:"Zainstaluj aplikację",
 in_ios:"iPhone/iPad: w Safari stuknij przycisk Udostępnij i wybierz „Do ekranu początkowego”.",
 in_iosData:"Ważne na iPhonie: aplikacja nie dzieli danych z Safari. Najpierw zainstaluj i wypełnij listę w aplikacji albo wyeksportuj dane i zaimportuj je w aplikacji.",
 off_msg:"Brak sieci. Oglądasz zapisaną kopię (wersja z {d}).",
-dirs:"północ|północny wschód|wschód|południowy wschód|południe|południowy zachód|zachód|północny zachód"
+dirs:"północ|północny wschód|wschód|południowy wschód|południe|południowy zachód|zachód|północny zachód",
+sheet_title:"Karta awaryjna",
+sheet_hint:"Jedna kartka z numerami alarmowymi, najbliższym schronem i tym, co robić w pierwszych dniach. Wydrukuj ją i przyklej na lodówce.",
+sheet_btn:"Drukuj kartę awaryjną",
+sheet_noprint:"Jeśli okno drukowania się tu nie otwiera, wydrukuj ze strony:",
+sheet_shelter:"Najbliższy schron",
+sheet_hand:"Uzupełnij ręcznie",
+sheet_fam:"Rodzina, telefon",
+sheet_valve:"Główny zawór wody",
+sheet_fuse:"Skrzynka bezpieczników",
+sheet_meet:"Miejsce spotkania",
+sheet_src:"Źródło: DSB, sikkerhverdag.no. W razie wątpliwości obowiązują zalecenia DSB."
 };
 
 L.lt={
@@ -1282,7 +1346,18 @@ in_btn:"Įdiegti programėlę",
 in_ios:"iPhone/iPad: Safari paspauskite mygtuką „Bendrinti“ ir pasirinkite „Įtraukti į pradžios ekraną“.",
 in_iosData:"Svarbu iPhone: programėlė nesidalija duomenimis su Safari. Pirmiausia įdiekite ir pildykite sąrašą programėlėje arba eksportuokite duomenis ir importuokite juos programėlėje.",
 off_msg:"Nėra ryšio. Matote išsaugotą kopiją (versija {d}).",
-dirs:"šiaurė|šiaurės rytai|rytai|pietryčiai|pietūs|pietvakariai|vakarai|šiaurės vakarai"
+dirs:"šiaurė|šiaurės rytai|rytai|pietryčiai|pietūs|pietvakariai|vakarai|šiaurės vakarai",
+sheet_title:"Ekstremalios situacijos lapas",
+sheet_hint:"Vienas lapas su pagalbos numeriais, artimiausia slėptuve ir ką daryti pirmomis dienomis. Atsispausdinkite ir priklijuokite ant šaldytuvo.",
+sheet_btn:"Spausdinti lapą",
+sheet_noprint:"Jei spausdinimo langas čia neatsidaro, spausdinkite iš svetainės:",
+sheet_shelter:"Artimiausia slėptuvė",
+sheet_hand:"Užpildykite ranka",
+sheet_fam:"Šeima, telefonas",
+sheet_valve:"Vandens uždarymo čiaupas",
+sheet_fuse:"Saugiklių dėžė",
+sheet_meet:"Susitikimo vieta",
+sheet_src:"Šaltinis: DSB, sikkerhverdag.no. Abejodami vadovaukitės DSB patarimais."
 };
 
 L.uk={
@@ -1475,7 +1550,18 @@ in_btn:"Встановити застосунок",
 in_ios:"iPhone/iPad: у Safari натисніть кнопку «Поширити» й виберіть «На початковий екран».",
 in_iosData:"Важливо на iPhone: застосунок не ділиться даними з Safari. Спершу встановіть і заповнюйте список у застосунку або експортуйте дані й імпортуйте їх у застосунку.",
 off_msg:"Немає мережі. Ви бачите збережену копію (версія від {d}).",
-dirs:"північ|північний схід|схід|південний схід|південь|південний захід|захід|північний захід"
+dirs:"північ|північний схід|схід|південний схід|південь|південний захід|захід|північний захід",
+sheet_title:"Аварійний аркуш",
+sheet_hint:"Один аркуш із номерами екстрених служб, найближчим укриттям і тим, що робити в перші дні. Роздрукуйте й приклейте на холодильник.",
+sheet_btn:"Надрукувати аварійний аркуш",
+sheet_noprint:"Якщо вікно друку тут не відкривається, надрукуйте з вебсайту:",
+sheet_shelter:"Найближче укриття",
+sheet_hand:"Заповніть від руки",
+sheet_fam:"Родина, телефон",
+sheet_valve:"Кран перекриття води",
+sheet_fuse:"Електрощиток",
+sheet_meet:"Місце зустрічі",
+sheet_src:"Джерело: DSB, sikkerhverdag.no. У разі сумніву діють поради DSB."
 };
 
 L.ar={
@@ -1668,7 +1754,18 @@ in_btn:"تثبيت التطبيق",
 in_ios:"آيفون/آيباد: اضغط زر المشاركة في Safari واختر «إضافة إلى الشاشة الرئيسية».",
 in_iosData:"مهم على آيفون: التطبيق لا يشارك البيانات مع Safari. ثبّته أولًا واملأ القائمة داخل التطبيق، أو صدّر بياناتك واستوردها في التطبيق.",
 off_msg:"لا يوجد اتصال. أنت ترى النسخة المحفوظة (إصدار {d}).",
-dirs:"شمال|شمال شرق|شرق|جنوب شرق|جنوب|جنوب غرب|غرب|شمال غرب"
+dirs:"شمال|شمال شرق|شرق|جنوب شرق|جنوب|جنوب غرب|غرب|شمال غرب",
+sheet_title:"ورقة الطوارئ",
+sheet_hint:"ورقة واحدة فيها أرقام الطوارئ وأقرب ملجأ وما تفعله في الأيام الأولى. اطبعها وألصقها على الثلاجة.",
+sheet_btn:"اطبع ورقة الطوارئ",
+sheet_noprint:"إن لم تفتح نافذة الطباعة هنا، اطبعها من الموقع:",
+sheet_shelter:"أقرب ملجأ",
+sheet_hand:"املأ باليد",
+sheet_fam:"العائلة، الهاتف",
+sheet_valve:"محبس الماء الرئيسي",
+sheet_fuse:"لوحة الكهرباء",
+sheet_meet:"مكان اللقاء",
+sheet_src:"المصدر: DSB، sikkerhverdag.no. عند الشك تُتّبع نصائح DSB."
 };
 
 L.so={
@@ -1861,7 +1958,18 @@ in_btn:"Ku rakib app-ka",
 in_ios:"iPhone/iPad: Safari ku riix badhanka La wadaag kadibna dooro «Ku dar Shaashadda Hore».",
 in_iosData:"Muhiim iPhone: app-ku xog lama wadaago Safari. Marka hore rakib oo liiska ku buuxi app-ka, ama xogtaada dhoofi oo app-ka ku soo dhoofso.",
 off_msg:"Internet ma jiro. Waxaad arkaysaa nuqulka la kaydiyay (nooca {d}).",
-dirs:"waqooyi|waqooyi-bari|bari|koonfur-bari|koonfur|koonfur-galbeed|galbeed|waqooyi-galbeed"
+dirs:"waqooyi|waqooyi-bari|bari|koonfur-bari|koonfur|koonfur-galbeed|galbeed|waqooyi-galbeed",
+sheet_title:"Warqadda xaaladda degdegga",
+sheet_hint:"Hal warqad oo leh lambarrada degdegga, hoyga ugu dhow iyo waxa la sameeyo maalmaha ugu horreeya. Daabac oo ku dheji qaboojiyaha.",
+sheet_btn:"Daabac warqadda degdegga",
+sheet_noprint:"Haddii daaqadda daabacaadda halkan aanay ka furmin, ka daabac bogga:",
+sheet_shelter:"Hoyga ugu dhow",
+sheet_hand:"Gacanta ku buuxi",
+sheet_fam:"Qoyska, telefoon",
+sheet_valve:"Furaha biyaha ee guud",
+sheet_fuse:"Sanduuqa korontada",
+sheet_meet:"Goobta la isugu imanayo",
+sheet_src:"Isha: DSB, sikkerhverdag.no. Haddii shaki jiro, raac talooyinka DSB."
 };
 
 L.ti={
@@ -2054,7 +2162,18 @@ in_btn:"ኣፕ ኣእትው",
 in_ios:"iPhone/iPad፦ ኣብ Safari ናይ ምክፋል መልጎም ጠውቑ፡ «ናብ ቀንዲ ስክሪን ወስኽ» ምረጹ።",
 in_iosData:"ኣብ iPhone ኣገዳሲ፦ እቲ ኣፕ ምስ Safari ሓበሬታ ኣይካፈልን። ቅድም ኣእትዉ ድሕሪኡ ኣብ ኣፕ ዝርዝር ምልኡ፡ ወይ ሓበሬታኹም ኣውጺኹም ኣብ ኣፕ ኣእትዉ።",
 off_msg:"መርበብ የለን። ዝተዓቀበ ቅዳሕ ትርእዩ ኣለኹም (ስሪት {d})።",
-dirs:"ሰሜን|ሰሜን ምብራቕ|ምብራቕ|ደቡብ ምብራቕ|ደቡብ|ደቡብ ምዕራብ|ምዕራብ|ሰሜን ምዕራብ"
+dirs:"ሰሜን|ሰሜን ምብራቕ|ምብራቕ|ደቡብ ምብራቕ|ደቡብ|ደቡብ ምዕራብ|ምዕራብ|ሰሜን ምዕራብ",
+sheet_title:"ናይ ህጹጽ ወረቐት",
+sheet_hint:"ሓንቲ ወረቐት ምስ ቁጽርታት ህጹጽ ረድኤት፡ ዝቐረበ መዕቆቢን ኣብ ቀዳሞት መዓልታት እንታይ ከም እትገብሩን። ሓቲምኩም ኣብ ፍሪጅ ለጥፍዋ።",
+sheet_btn:"ናይ ህጹጽ ወረቐት ሕተሙ",
+sheet_noprint:"መስኮት ሕትመት ኣብዚ እንተዘይተኸፊቱ፡ ካብዚ መርበብ ሕተሙ፦",
+sheet_shelter:"ዝቐረበ መዕቆቢ",
+sheet_hand:"ብኢድ ምልኡ",
+sheet_fam:"ስድራ፡ ቴሌፎን",
+sheet_valve:"መዕጸዊ ማይ",
+sheet_fuse:"ሳጹን ኤሌክትሪክ",
+sheet_meet:"መራኸቢ ቦታ",
+sheet_src:"ምንጪ፦ DSB, sikkerhverdag.no። ጥርጣረ እንተሎ ምኽሪ DSB ይኽተል።"
 };
 
 L.tl={
@@ -2247,7 +2366,18 @@ in_btn:"I-install ang app",
 in_ios:"iPhone/iPad: pindutin ang Share button sa Safari at piliin ang “Add to Home Screen”.",
 in_iosData:"Mahalaga sa iPhone: hindi nagbabahagi ng data ang app sa Safari. Mag-install muna at punan ang listahan sa app, o i-export ang data at i-import ito sa app.",
 off_msg:"Walang koneksyon. Ang nakikita mo ay ang naka-save na kopya (bersyon {d}).",
-dirs:"hilaga|hilagang-silangan|silangan|timog-silangan|timog|timog-kanluran|kanluran|hilagang-kanluran"
+dirs:"hilaga|hilagang-silangan|silangan|timog-silangan|timog|timog-kanluran|kanluran|hilagang-kanluran",
+sheet_title:"Emergency sheet",
+sheet_hint:"Isang pahina na may mga emergency number, pinakamalapit na silungan at ang gagawin sa mga unang araw. I-print at idikit sa ref.",
+sheet_btn:"I-print ang emergency sheet",
+sheet_noprint:"Kung hindi bumukas dito ang print window, i-print mula sa website:",
+sheet_shelter:"Pinakamalapit na silungan",
+sheet_hand:"Punan sa kamay",
+sheet_fam:"Pamilya, telepono",
+sheet_valve:"Pangunahing balbula ng tubig",
+sheet_fuse:"Fuse box",
+sheet_meet:"Tagpuan",
+sheet_src:"Pinagkunan: DSB, sikkerhverdag.no. Kung may duda, sundin ang payo ng DSB."
 };
 
 L.ja={
@@ -2440,7 +2570,18 @@ in_btn:"アプリをインストール",
 in_ios:"iPhone/iPad：Safariの共有ボタンをタップし、「ホーム画面に追加」を選びます。",
 in_iosData:"iPhoneでの注意：アプリはSafariとデータを共有しません。先にインストールしてアプリでリストを入力するか、データをエクスポートしてアプリでインポートしてください。",
 off_msg:"オフラインです。保存されたコピー（{d}版）を表示しています。",
-dirs:"北|北東|東|南東|南|南西|西|北西"
+dirs:"北|北東|東|南東|南|南西|西|北西",
+sheet_title:"緊急シート",
+sheet_hint:"緊急番号、最寄りのシェルター、最初の数日にすべきことを1枚にまとめました。印刷して冷蔵庫に貼りましょう。",
+sheet_btn:"緊急シートを印刷",
+sheet_noprint:"ここで印刷画面が開かない場合は、ウェブサイトから印刷してください：",
+sheet_shelter:"最寄りのシェルター",
+sheet_hand:"手書きで記入",
+sheet_fam:"家族・電話番号",
+sheet_valve:"水道の元栓",
+sheet_fuse:"分電盤",
+sheet_meet:"集合場所",
+sheet_src:"出典：DSB、sikkerhverdag.no。迷ったらDSBの助言に従ってください。"
 };
 
 const ORDER=["nb","en","es","pl","lt","uk","ar","so","ti","tl","ja"];
@@ -2635,6 +2776,27 @@ let shLast=null; try{shLast=JSON.parse(localStorage.getItem("shLast")||"null")}c
 // Compass direction from the searched point to a shelter, for use without a map
 function dir8(a1,o1,a2,o2){const r=Math.PI/180,y=Math.sin((o2-o1)*r)*Math.cos(a2*r),x=Math.cos(a1*r)*Math.sin(a2*r)-Math.sin(a1*r)*Math.cos(a2*r)*Math.cos((o2-o1)*r);
   const b=(Math.atan2(y,x)/r+360)%360;return t("dirs").split("|")[Math.round(b/45)%8]}
+// ---- One-page emergency sheet (printed with the browser's own print, so it stays sharp) ----
+function renderSheet(){
+  const L1=k=>`<li>${esc(t(k))}</li>`;
+  let shel=`<div class="line"></div><div class="line"></div>`;
+  if(shLast){const s=SHELTERS.map(x=>({...x,km:hav(shLast.lat,shLast.lon,x.lat,x.lon)})).sort((a,b)=>a.km-b.km)[0];
+    if(s)shel=`<p style="margin:0"><b>${esc(s.adresse)}</b>, ${esc(s.sted)} · ${nf(s.plasser)} ${esc(t("sh_places"))}<br>${nf(Math.round(s.km*10)/10)} km ${esc(dir8(shLast.lat,shLast.lon,s.lat,s.lon))} · ${s.lat.toFixed(5)}, ${s.lon.toFixed(5)}<br><small>${esc(fmt(t("sh_res"),{q:shLast.label}))}</small></p>`}
+  const nums=[["110","n110"],["112","n112"],["113","n113"],["116 117","n116"],["22 59 13 00","n_gift"]].map(([n,k])=>`<b>${n}</b><span>${esc(t(k))}</span>`).join("");
+  const hand=["sheet_fam","sheet_fam","sheet_fam","sheet_valve","sheet_fuse","sheet_meet"].map(k=>`<div class="line">${esc(t(k))}:</div>`).join("");
+  const el=$("#sheet");el.dir=document.documentElement.dir;el.lang=document.documentElement.lang;
+  el.innerHTML=`<h1>${esc(t("sheet_title"))}</h1><p class="meta">${esc(t("title"))} · ${stamp()}</p><div class="cols"><div>
+    <h2>${esc(t("n_title"))}</h2><div class="nums">${nums}</div>
+    <h2>${esc(t("sheet_shelter"))}</h2>${shel}
+    <h2>${esc(t("si_title"))}</h2><ul>${["si_1","si_2","si_3","si_4"].map(L1).join("")}</ul>
+    <p class="co">${esc(t("co_warn"))}</p><p class="src" style="margin-top:1.5mm">${esc(t("co_note"))}</p></div><div>
+    <h2>${esc(t("bo_h1"))}</h2><ul>${["bo_1a","bo_1b","bo_1c"].map(L1).join("")}</ul>
+    <h2>${esc(t("bo_h2"))}</h2><ul>${["bo_2a","bo_2b","bo_2c"].map(L1).join("")}</ul>
+    <h2>${esc(t("bo_h3"))}</h2><ul>${["bo_3a","bo_3b","bo_3c"].map(L1).join("")}</ul>
+    <h2>${esc(t("sheet_hand"))}</h2>${hand}</div></div>
+    <p class="src">${esc(t("sheet_src"))}</p>`}
+window.addEventListener("beforeprint",renderSheet);
+$("#sheetbtn").onclick=()=>{renderSheet();if(window.claude)$("#sheetnp").hidden=false;try{window.print()}catch(e){$("#sheetnp").hidden=false}};
 function shShow(lat,lon,label){
   shLast={lat,lon,label};try{localStorage.setItem("shLast",JSON.stringify(shLast))}catch(e){}
   const r=SHELTERS.map(s=>({...s,km:hav(lat,lon,s.lat,s.lon)})).sort((a,b)=>a.km-b.km).slice(0,3);

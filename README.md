@@ -14,6 +14,7 @@ Household emergency preparedness list for Norway, based on the advice from DSB (
 - Shelter finder for Oslo and Bærum by postcode, street or coordinates, using a local copy of DSB's public shelter register.
 - Emergency numbers, siren signals and a news tab with security, AI and Norwegian headlines.
 - Installable as an app on Android and iPhone (install button on the overview tab).
+- One-page printable emergency sheet (numbers, nearest shelter, sirens, first hour/day/week, space to write by hand). Printing the page always gives this sheet.
 - Works offline: after the first visit with a connection, the page opens without network (service worker). Excel and PDF need a connection the first time each is used.
 
 ## Privacy

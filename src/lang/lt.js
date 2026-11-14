@@ -188,5 +188,16 @@ in_btn:"Įdiegti programėlę",
 in_ios:"iPhone/iPad: Safari paspauskite mygtuką „Bendrinti“ ir pasirinkite „Įtraukti į pradžios ekraną“.",
 in_iosData:"Svarbu iPhone: programėlė nesidalija duomenimis su Safari. Pirmiausia įdiekite ir pildykite sąrašą programėlėje arba eksportuokite duomenis ir importuokite juos programėlėje.",
 off_msg:"Nėra ryšio. Matote išsaugotą kopiją (versija {d}).",
-dirs:"šiaurė|šiaurės rytai|rytai|pietryčiai|pietūs|pietvakariai|vakarai|šiaurės vakarai"
+dirs:"šiaurė|šiaurės rytai|rytai|pietryčiai|pietūs|pietvakariai|vakarai|šiaurės vakarai",
+sheet_title:"Ekstremalios situacijos lapas",
+sheet_hint:"Vienas lapas su pagalbos numeriais, artimiausia slėptuve ir ką daryti pirmomis dienomis. Atsispausdinkite ir priklijuokite ant šaldytuvo.",
+sheet_btn:"Spausdinti lapą",
+sheet_noprint:"Jei spausdinimo langas čia neatsidaro, spausdinkite iš svetainės:",
+sheet_shelter:"Artimiausia slėptuvė",
+sheet_hand:"Užpildykite ranka",
+sheet_fam:"Šeima, telefonas",
+sheet_valve:"Vandens uždarymo čiaupas",
+sheet_fuse:"Saugiklių dėžė",
+sheet_meet:"Susitikimo vieta",
+sheet_src:"Šaltinis: DSB, sikkerhverdag.no. Abejodami vadovaukitės DSB patarimais."
 };

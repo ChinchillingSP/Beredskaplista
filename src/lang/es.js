@@ -188,5 +188,16 @@ in_btn:"Instalar la app",
 in_ios:"iPhone/iPad: pulsa el botón Compartir de Safari y elige «Añadir a pantalla de inicio».",
 in_iosData:"Importante en iPhone: la app no comparte datos con Safari. Instálala primero y rellena la lista en la app, o exporta tus datos e impórtalos en la app.",
 off_msg:"Sin conexión. Estás viendo la copia guardada (versión del {d}).",
-dirs:"norte|noreste|este|sureste|sur|suroeste|oeste|noroeste"
+dirs:"norte|noreste|este|sureste|sur|suroeste|oeste|noroeste",
+sheet_title:"Hoja de emergencia",
+sheet_hint:"Una hoja con los teléfonos de emergencia, el refugio más cercano y qué hacer los primeros días. Imprímela y pégala en la nevera.",
+sheet_btn:"Imprimir la hoja de emergencia",
+sheet_noprint:"Si aquí no se abre la ventana de imprimir, imprímela desde la web:",
+sheet_shelter:"Refugio más cercano",
+sheet_hand:"Rellenar a mano",
+sheet_fam:"Familia, teléfono",
+sheet_valve:"Llave de paso del agua",
+sheet_fuse:"Cuadro eléctrico",
+sheet_meet:"Punto de encuentro",
+sheet_src:"Fuente: DSB, sikkerhverdag.no. Ante la duda, mandan los consejos de la DSB."
 };

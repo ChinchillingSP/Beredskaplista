@@ -188,5 +188,16 @@ in_btn:"Installer appen",
 in_ios:"iPhone/iPad: trykk Del-knappen i Safari og velg «Legg til på Hjem-skjerm».",
 in_iosData:"Viktig på iPhone: appen deler ikke data med Safari. Installer først og fyll ut lista i appen, eller eksporter dataene og importer dem i appen.",
 off_msg:"Uten nett. Du ser den lagrede kopien (versjon {d}).",
-dirs:"nord|nordøst|øst|sørøst|sør|sørvest|vest|nordvest"
+dirs:"nord|nordøst|øst|sørøst|sør|sørvest|vest|nordvest",
+sheet_title:"Beredskapsark",
+sheet_hint:"Ett ark med nødnumre, nærmeste tilfluktsrom og hva dere gjør de første dagene. Skriv det ut og heng det på kjøleskapet.",
+sheet_btn:"Skriv ut beredskapsarket",
+sheet_noprint:"Hvis utskriftsvinduet ikke åpnes her, skriv ut fra nettsiden:",
+sheet_shelter:"Nærmeste tilfluktsrom",
+sheet_hand:"Fyll ut for hånd",
+sheet_fam:"Familie, telefon",
+sheet_valve:"Stoppekran for vann",
+sheet_fuse:"Sikringsskap",
+sheet_meet:"Møteplass",
+sheet_src:"Kilde: DSB, sikkerhverdag.no. Ved tvil gjelder DSBs råd."
 };

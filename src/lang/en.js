@@ -188,5 +188,16 @@ in_btn:"Install the app",
 in_ios:"iPhone/iPad: tap the Share button in Safari and choose “Add to Home Screen”.",
 in_iosData:"Important on iPhone: the app does not share data with Safari. Install first and fill in the list in the app, or export your data and import it in the app.",
 off_msg:"Offline. You are viewing the saved copy (version {d}).",
-dirs:"north|north-east|east|south-east|south|south-west|west|north-west"
+dirs:"north|north-east|east|south-east|south|south-west|west|north-west",
+sheet_title:"Emergency sheet",
+sheet_hint:"One page with emergency numbers, the nearest shelter and what to do in the first days. Print it and put it on the fridge.",
+sheet_btn:"Print the emergency sheet",
+sheet_noprint:"If the print window does not open here, print from the website:",
+sheet_shelter:"Nearest shelter",
+sheet_hand:"Fill in by hand",
+sheet_fam:"Family, phone",
+sheet_valve:"Water shut-off valve",
+sheet_fuse:"Fuse box",
+sheet_meet:"Meeting point",
+sheet_src:"Source: DSB, sikkerhverdag.no. If in doubt, DSB's advice applies."
 };
