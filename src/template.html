@@ -294,6 +294,7 @@ p.tiny{font-size:12px;margin:0}
     <div class="panel">
       <h2 data-t="w_title"></h2>
       <p class="notice" data-t="w_intro"></p>
+      <p class="notice" id="wpause" role="note" style="border-inline-start-width:8px"></p>
       <div class="subtabs" id="wsub"></div>
       <p class="muted" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center"><span id="wupd"></span> · <b id="wage"></b><button type="button" class="ghost" id="wref" data-t="w_ref"></button></p>
       <ul class="wl" id="wl"></ul>
@@ -702,6 +703,8 @@ function renderWire(){wTick();
   const v=wire.filter(x=>wsub==="all"||(wsub==="no"?x.n:x.c===wsub)).sort((a,b)=>String(b.d).localeCompare(String(a.d)));
   const df=s=>{try{return new Date(s).toLocaleString(lang==="nb"?"nb-NO":lang,{dateStyle:"short",timeStyle:"short"})}catch(e){return s}};
   $("#wupd").textContent=wireAt?fmt(t("w_upd"),{x:df(wireAt)}):"";
+  // News updates are paused (2026-11-22): the headlines stay, with a notice and the date of the last update
+  $("#wpause").textContent=fmt(t("w_paused"),{x:(()=>{try{return new Date(wireAt||"2026-11-22").toLocaleDateString(lang==="nb"?"nb-NO":lang,{dateStyle:"long"})}catch(e){return "2026-11-22"}})()});
   $("#wl").innerHTML=v.length?v.map(x=>`<li><span class="tag ${esc(x.c)}">${esc(t("w_"+x.c))}</span><a href="${/^https:\/\//.test(x.u)?esc(x.u):"#"}" target="_blank" rel="noopener">${esc(x.t)}</a><small>${esc(x.s)} · ${esc(df(x.d))}</small></li>`).join(""):`<li class="muted">${esc(t("w_empty"))}</li>`;
   $("#wfeeds").textContent=WFEEDS;
 }
